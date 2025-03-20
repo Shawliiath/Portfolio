@@ -1,0 +1,333 @@
+/* Project Details Page Styles */
+
+.project-details-page {
+    padding-top: 80px; /* Pour laisser de l'espace pour le header fixe */
+  }
+  
+  #project-hero {
+    background: linear-gradient(-45deg, #2c3e50, #1a1a1a, #2a56e0, #3a66f0);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    color: white;
+    padding: 100px 0 60px;
+    text-align: center;
+  }
+  
+  [data-theme='dark'] #project-hero {
+    background: linear-gradient(-45deg, #1e293b, #0f172a, #2a56e0, #3a66f0);
+  }
+  
+  .project-hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .project-hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+  }
+  
+  .project-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+    opacity: 0.9;
+  }
+  
+  .project-hero-techs {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .project-hero-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  /* Project Overview Section */
+  #project-overview {
+    padding: 80px 0;
+  }
+  
+  .overview-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+  }
+  
+  .overview-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+  }
+  
+  .overview-detail h4 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .overview-detail h4 i {
+    color: var(--primary);
+    margin-right: 10px;
+  }
+  
+  .overview-description p {
+    margin-bottom: 20px;
+    color: var(--text-light);
+  }
+  
+  /* Features Section */
+  #project-features {
+    background-color: var(--gray-100);
+    padding: 80px 0;
+  }
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+  }
+  
+  .feature-card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s;
+  }
+  
+  [data-theme='dark'] .feature-card {
+    background-color: var(--gray-200);
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  }
+  
+  .feature-icon {
+    width: 70px;
+    height: 70px;
+    background-color: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 1.5rem;
+  }
+  
+  .feature-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+  }
+  
+  .feature-card p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+  }
+  
+  /* Screenshots Section */
+  #project-screenshots {
+    padding: 80px 0;
+  }
+  
+  .screenshots-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+  
+  .screenshot-item {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    transition: all 0.3s;
+  }
+  
+  [data-theme='dark'] .screenshot-item {
+    background-color: var(--gray-200);
+  }
+  
+  .screenshot-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+  
+  .screenshot-img {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .screenshot-img img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.5s;
+  }
+  
+  .screenshot-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .screenshot-img:hover .screenshot-overlay {
+    opacity: 1;
+  }
+  
+  .screenshot-overlay span {
+    color: white;
+    font-weight: 500;
+    border: 2px solid white;
+    padding: 8px 15px;
+    border-radius: 30px;
+  }
+  
+  .screenshot-caption {
+    padding: 20px;
+  }
+  
+  .screenshot-caption h4 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+  }
+  
+  .screenshot-caption p {
+    color: var(--text-light);
+  }
+  
+  /* How It Works Section */
+  #how-it-works {
+    background-color: var(--gray-100);
+    padding: 80px 0;
+  }
+  
+  .workflow-steps {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .workflow-step {
+    display: flex;
+    margin-bottom: 50px;
+    position: relative;
+  }
+  
+  .workflow-step:last-child {
+    margin-bottom: 0;
+  }
+  
+  .workflow-step::after {
+    content: '';
+    position: absolute;
+    left: 40px;
+    top: 70px;
+    bottom: -50px;
+    width: 3px;
+    background-color: var(--primary);
+    z-index: 0;
+  }
+  
+  .workflow-step:last-child::after {
+    display: none;
+  }
+  
+  .step-number {
+    width: 80px;
+    height: 80px;
+    background-color: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-right: 30px;
+    z-index: 1;
+  }
+  
+  .step-content {
+    flex: 1;
+  }
+  
+  .step-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  
+  .step-content p {
+    margin-bottom: 20px;
+    color: var(--text-light);
+  }
+  
+  .step-img {
+    margin-top: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .step-img img {
+    width: 100%;
+    height: auto;
+  }
+  
+  /* Technical Details Section */
+  #technical-details {
+    padding: 80px 0;
+  }
+  
+  .tech-stack {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-bottom: 60px;
+  }
+  
+  .tech-category h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: var(--primary);
+    position: relative;
+    padding-bottom: 10px;
+  }
+  
+  .tech-category h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary);
+  }
+  
+  .tech-list {
+    list-style: none;
+  }
+  
+  .tech-list li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+  }
+  

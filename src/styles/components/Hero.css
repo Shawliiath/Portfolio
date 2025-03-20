@@ -1,0 +1,76 @@
+#hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Ajout d'un arrière-plan avec gradient et motif */
+  #hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.8) 100%);
+    z-index: -1;
+  }
+  
+  /* Ajout d'un motif subtil en arrière-plan */
+  #hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(var(--primary-light) 1px, transparent 1px),
+      radial-gradient(var(--primary-light) 1px, transparent 1px);
+    background-size: 50px 50px;
+    background-position: 0 0, 25px 25px;
+    opacity: 0.05;
+    z-index: -1;
+  }
+  
+  .hero-content {
+    max-width: 700px;
+    text-align: center;
+    margin: 0 auto;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  .hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
+  }
+  
+  .hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: var(--text-light);
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .hero-content h1 {
+      font-size: 2.5rem;
+    }
+  }

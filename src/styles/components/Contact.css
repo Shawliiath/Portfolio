@@ -1,0 +1,17 @@
+#contact {
+    padding: 6rem 0;
+  }
+  
+  .contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  @media (min-width: 768px) {
+    .contact-container {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+  }
