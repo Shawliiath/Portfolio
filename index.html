@@ -87,11 +87,11 @@
       <h3>Ce que j’ai fait, dans l’ordre</h3>
       <table class="registre">
         <tbody>
-          <tr><th>Oct. 2024</th><td>Sept séances d’observation dans les trois restaurants, sur le créneau où se font les commandes. Chaque compte rendu renvoyé au responsable du restaurant pour correction.</td></tr>
+          <tr><th>Oct. 2024</th><td>Sept séances d’observation dans les trois restaurants, entre les deux services. Chaque compte rendu renvoyé au responsable pour correction : cinq sur sept sont revenus corrigés.</td></tr>
           <tr><th>30 oct. 2024</th><td>Expression de besoin validée : 19 exigences, ramenées à un recto pour qu’elle soit lue.</td></tr>
           <tr><th>Nov. 2024</th><td>Maquettes sur Figma, modèle de données Firestore, premières versions.</td></tr>
           <tr><th>19 févr. 2025</th><td>Une refonte casse tout un soir, la seule copie saine a 11 jours. Le lendemain : dépôt Git, préproduction à chaque pull request, production à la fusion, le tout par GitHub Actions.</td></tr>
-          <tr><th>Mars 2025</th><td>Pilote dans un premier restaurant, six semaines, avec une fiche de formation A4 plastifiée posée à côté de la tablette.</td></tr>
+          <tr><th>Mars 2025</th><td>Pilote dans un premier restaurant, six semaines : deux formations de 40 minutes entre les services, et une fiche A4 plastifiée de huit captures, scotchée dans la réserve.</td></tr>
           <tr><th>Avril et mai 2025</th><td>Deuxième puis troisième restaurant, une demi-journée chacun.</td></tr>
         </tbody>
       </table>
@@ -111,7 +111,7 @@
       <div class="feuillets">
         <section class="feuillet">
           <h4>Un clavier maison de 512 lignes</h4>
-          <p>Le plus ancien cuisinier du pilote gardait son carnet papier. Je lui ai demandé de passer une commande devant moi : en paysage, le clavier Android cachait le champ de saisie. J’ai écrit un clavier virtuel, déplaçable parce qu’il tape de la main droite. Une semaine plus tard il lâchait le carnet, et en juin c’est lui qui formait les saisonniers.</p>
+          <p>Le plus ancien employé du restaurant pilote gardait son carnet papier. Je lui ai demandé de passer une commande devant moi : en paysage, le clavier Android cachait le champ de saisie. J’ai écrit un clavier virtuel, déplaçable parce qu’il tape de la main droite. Une semaine plus tard il lâchait le carnet, et en juin c’est lui qui formait les saisonniers.</p>
         </section>
         <section class="feuillet">
           <h4>Une preuve plutôt qu’une impression</h4>
@@ -123,7 +123,7 @@
         </section>
       </div>
 
-      <p class="resultat"><b>−35 %</b> d’écarts relevés à la réception des livraisons, entre l’hiver 2024 et le printemps 2025. C’est le chiffre que je peux défendre ; les autres mesures, et leurs limites, sont dans mon mémoire.</p>
+      <p class="resultat"><b>−35 %</b> d’écarts relevés à la réception des livraisons, entre l’hiver 2024 et le printemps 2025. C’est le chiffre que je peux défendre ; je détaille les autres, et leurs limites, en entretien.</p>
     </div>
   </article>
 
@@ -149,9 +149,9 @@
           <dt>Le paiement mixte</dt>
           <dd>Le midi, un client sur cinq paie en partie en titres restaurant, en partie en carte ou en espèces. Je ne l’avais pas prévu au cadrage. Le module cumule les moyens de paiement et suit le reste dû en permanence, et tous les calculs se font en centimes entiers pour ne plus jamais perdre un centime dans une virgule.</dd>
           <dt>Quatre heures plutôt qu’un statut</dt>
-          <dd>Le dirigeant voulait savoir combien de temps sépare le paiement de la remise du plateau. Chaque commande garde l’heure de sa création, de son paiement, de sa préparation et de sa remise : en juin 2026, ce temps moyen sort par restaurant et par tranche horaire.</dd>
+          <dd>Le dirigeant voulait savoir combien de temps sépare le paiement de la remise du plateau. Chaque commande garde l’heure de sa création, de son paiement, du premier et du dernier sandwich validé : en juin 2026, ce temps moyen sort par restaurant et par tranche horaire.</dd>
           <dt>Un écran lu à deux mètres</dt>
-          <dd>J’ai réglé la taille du texte sur place, à deux mètres, avec deux cuisiniers dont un porte des lunettes. Un samedi de rush, les commandes les plus anciennes sont passées en page 2 : le jour même, l’affichage est devenu une pile, avec un bandeau permanent pour les commandes en retard.</dd>
+          <dd>J’ai réglé la taille du texte sur place, à deux mètres, avec deux personnes de l’équipe, dont une qui porte des lunettes. Un samedi de rush, les commandes les plus anciennes sont passées en page 2 sans que personne les voie. Signalé le lundi, corrigé le jour même : l’affichage est devenu une pile, avec un bandeau permanent pour les commandes de plus de 15 minutes.</dd>
         </dl>
       </div>
       <!-- ticket cuisine d'exemple, imprimé en css -->
@@ -162,8 +162,8 @@
         <p class="t-sep"></p>
         <p class="t-ligne"><span>Créée</span><span>12:01:14</span></p>
         <p class="t-ligne"><span>Payée</span><span>12:01:52</span></p>
-        <p class="t-ligne"><span>Préparée</span><span>12:07:30</span></p>
-        <p class="t-ligne"><span>Remise</span><span>12:08:05</span></p>
+        <p class="t-ligne"><span>En préparation</span><span>12:03:10</span></p>
+        <p class="t-ligne"><span>Prête</span><span>12:07:30</span></p>
         <p class="t-sep"></p>
         <p class="t-pied">Payé : titres restaurant + carte</p>
         <figcaption>Exemple de ticket : les quatre heures enregistrées pour chaque commande.</figcaption>
@@ -188,10 +188,10 @@
       <p class="chapeau">Livrer, c’est la moitié du travail. L’autre moitié, c’est que ça tienne pendant le service, avec des gens qui n’ont pas le temps de lire une notice.</p>
       <table class="registre">
         <tbody>
-          <tr><th>Former</th><td>Une fiche A4 plastifiée à côté de chaque tablette, des formations en salle, et un employé réticent devenu celui qui forme les saisonniers.</td></tr>
-          <tr><th>Répondre</th><td>Environ 40 signalements par an, dont une dizaine de vrais défauts : le reste, c’était de l’usage à expliquer ou un écran à repenser.</td></tr>
+          <tr><th>Former</th><td>Deux séances de 40 minutes entre les services, une fiche A4 plastifiée de huit captures, et un employé réticent devenu celui qui forme les saisonniers.</td></tr>
+          <tr><th>Répondre</th><td>Environ 40 signalements sur l’année, dont une dizaine de vrais défauts ; le reste, c’étaient des demandes d’évolution présentées comme des pannes, ou des problèmes hors application : wifi tombé, tablette déchargée.</td></tr>
           <tr><th>Prévenir</th><td>Après un correctif de trois lignes parti un vendredi soir en plein service (20 minutes pour revenir en arrière, 30 minutes de retour au papier), une règle tenue jusqu’au bout : pas de mise en production après le jeudi midi, et toujours un passage en préproduction sur une vraie tablette.</td></tr>
-          <tr><th>Sauvegarder</th><td>Des sauvegardes avec un test de restauration, une alerte sur le budget du cloud, un plan de continuité si le réseau ou le cloud tombe.</td></tr>
+          <tr><th>Sauvegarder</th><td>Un export hebdomadaire et une restauration testée, une alerte de budget sur Firebase, et après une tablette morte en plein service : une tablette de secours par restaurant, une procédure d’une page et un inventaire du parc.</td></tr>
           <tr><th>Transmettre</th><td>Un document de passation de 22 pages remis en juillet 2026, pour que la personne suivante ne reparte pas de zéro.</td></tr>
         </tbody>
       </table>
@@ -213,8 +213,8 @@
     <div class="corps">
       <p class="entete">Projet personnel</p>
       <h2 class="zino-titre"><img src="img/hz-logo.png" alt="HabboZino" width="772" height="136"></h2>
-      <p class="chapeau">Un jeu social en ligne, dans l’esprit de Habbo : des salles en 3D isométrique, des avatars, des objets rares, et une économie virtuelle, les émeraudes, qu’on peut reconvertir après vérification d’identité.</p>
-      <p>On l’a mené à deux, du début à la fin, en se partageant chaque partie selon les moments : l’un sur l’infrastructure pendant que l’autre écrivait le jeu, puis l’inverse. Le serveur de jeu en Java, le client dans le navigateur, le site et son administration, l’hébergement : on a touché à tout. <a href="https://habbozino.com">habbozino.com</a></p>
+      <p class="chapeau">Un jeu social en ligne, dans l’esprit de Habbo : des salles en vue isométrique, des avatars, des objets rares, et une économie virtuelle, les émeraudes, qu’on peut reconvertir après vérification d’identité.</p>
+      <p>On l’a construit à deux, en se partageant chaque partie selon les moments : l’un sur l’infrastructure pendant que l’autre écrivait le jeu, puis l’inverse. Le serveur de jeu en Java, le client dans le navigateur, le site et son administration, l’hébergement : on a touché à tout. <a href="https://habbozino.com">habbozino.com</a></p>
 
       <figure class="ecran-jeu">
         <img src="img/hz-jeu.jpg" alt="Le client HabboZino en jeu : une grande salle isométrique décorée, avec des avatars" width="1600" height="898" loading="lazy">
@@ -224,21 +224,13 @@
       <h3>Quelques problèmes qu’on a réglés</h3>
       <table class="registre">
         <tbody>
-          <tr><th>Sans le code source</th><td>Les objets en édition limitée recevaient des numéros de série au hasard, alors qu’un « 1/100 » vaut plus qu’un « 47/100 ». L’émulateur n’est distribué que compilé : décompilation, puis trois corrections directement dans le bytecode Java.</td></tr>
+          <tr><th>Sans le code source</th><td>Les objets en édition limitée recevaient des numéros de série au hasard, alors qu’un « 1/100 » vaut plus qu’un « 47/100 ». La version Extended de l’émulateur n’est distribuée que compilée : décompilation, puis trois corrections directement dans le bytecode Java.</td></tr>
           <tr><th>Trois entiers</th><td>Les avatars n’apparaissaient plus dans les salles. Le serveur envoyait trois champs de plus par avatar que le client ne lisait pas, et tout le flux binaire suivant était décalé. Trois lectures ajoutées dans le parser du client, et ces champs servent aujourd’hui aux bannières de profil vendues sur le site.</td></tr>
-          <tr><th>100 % de CPU</th><td>Des joueurs déconnectés au bout de dix à quinze minutes, un serveur à 100 % sans personne dessus. La console de l’émulateur lisait son entrée en boucle sans gérer la fin de fichier : une ligne dans le service systemd a suffi, une fois la cause trouvée.</td></tr>
+          <tr><th>100 % de CPU</th><td>Des joueurs déconnectés au bout de dix à quinze minutes, et l’émulateur à 100 % de CPU en continu depuis plus de 16 heures. Sa console de l’émulateur lisait son entrée en boucle sans gérer la fin de fichier : une ligne dans le service systemd a suffi, une fois la cause trouvée.</td></tr>
           <tr><th>Deux fois la même dépense</th><td>En relisant la boutique, une faille : deux requêtes simultanées pouvaient dépenser le même solde. Un verrou par joueur autour de chaque dépense, et des réclamations atomiques en base.</td></tr>
-          <tr><th>Zéro localhost</th><td>Un envoi manuel a mis en production une configuration pointant vers localhost et coupé le jeu plusieurs heures. Depuis, un script de déploiement en huit étapes qui refuse de partir s’il reste un seul « localhost ».</td></tr>
+          <tr><th>Zéro localhost</th><td>Un envoi manuel a mis en production une configuration pointant vers localhost et coupé le jeu plusieurs heures. On a alors écrit un script de déploiement en huit étapes, qui échouait s’il restait un seul « localhost ».</td></tr>
         </tbody>
       </table>
-
-      <div class="mur">
-        <figure><img src="img/hz-valeurs.jpg" alt="Page des objets rares : un dragon sur un piédestal, la cote du jour en bandeau défilant" width="1600" height="1000" loading="lazy"><figcaption>La cote des objets rares.</figcaption></figure>
-        <figure><img src="img/hz-staff.jpg" alt="Page de l’équipe : les avatars du staff réunis dans une scène isométrique" width="1600" height="1000" loading="lazy"><figcaption>L’équipe, en photo de groupe.</figcaption></figure>
-        <figure><img src="img/hz-badges.jpg" alt="Boutique de badges dessinée comme un distributeur automatique" width="1600" height="1000" loading="lazy"><figcaption>La boutique de badges, en distributeur.</figcaption></figure>
-        <figure><img src="img/hz-bannieres.jpg" alt="Boutique de bannières dessinée comme une cabine d’essayage avec un miroir" width="1600" height="1000" loading="lazy"><figcaption>Les bannières, à essayer dans une cabine.</figcaption></figure>
-      </div>
-      <p class="note">Les pages du site ont été redessinées une à une en pixel art à l’automne 2026, chacune autour d’un objet : un distributeur, une cabine d’essayage, une vitrine.</p>
     </div>
   </article>
 
@@ -255,7 +247,7 @@
       <h2>Parcours</h2>
       <table class="registre registre-large">
         <tbody>
-          <tr><th>2024 à 2026</th><td><b>Alternant développeur, MEXI</b> (Villeurbanne). Applications de la chaîne MEXI KEBAB : My Orders, la caisse, le support des équipes, et la refonte du site vitrine en binôme avec le développeur senior. Trois semaines en entreprise, une semaine à l’école.</td></tr>
+          <tr><th>2024 à 2026</th><td><b>Alternant développeur, MEXI</b> (région lyonnaise). Applications de la chaîne MEXI KEBAB : My Orders, la caisse, le support des équipes, et la refonte du site vitrine en binôme avec le développeur senior. Trois semaines en entreprise, une semaine à l’école.</td></tr>
           <tr><th>2023 à 2026</th><td><b>Bachelor Responsable de Projets Informatiques</b>, ISITECH Lyon. Diplômé en 2026.</td></tr>
           <tr><th>2024 à 2026</th><td><b>HabboZino</b>, projet de fin d’études mené à deux, toujours en ligne.</td></tr>
           <tr><th>2022 à 2023</th><td><b>BUT Informatique</b>, première année, IUT de Montreuil.</td></tr>
@@ -286,7 +278,7 @@
         </section>
         <section>
           <h3>Développer</h3>
-          <p>JavaScript, React, Material UI, PHP et Laravel, Java, SQL (MySQL), Firestore, API REST, Git. Preuve : My Orders, la caisse, HabboZino.</p>
+          <p>JavaScript, React, Material UI, Firestore, TypeScript, PHP et Laravel, Java, SQL (MySQL), Git. Preuve : My Orders, la caisse, HabboZino.</p>
         </section>
         <section>
           <h3>Mettre en production</h3>
