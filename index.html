@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yanis Moussi · informatique, développement et support</title>
+<meta name="description" content="Yanis Moussi, diplômé du Bachelor Responsable de Projets Informatiques (ISITECH Lyon). Développement et support : My Orders, système de caisse, HabboZino. France et Suisse.">
+<meta property="og:title" content="Yanis Moussi · développement et support">
+<meta property="og:description" content="J’ai remplacé un carnet à souches par une application utilisée chaque jour dans trois restaurants.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23fbfaf6'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='monospace' font-weight='700' font-size='15' fill='%23c23a2b'%3EYM%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="saut" href="#my-orders">Aller aux projets</a>
+<!-- portfolio de yanis : un carnet à souches, un bon par projet -->
+<main class="carnet">
+
+  <!-- bon 001 : moi -->
+  <article class="bon" id="moi">
+    <aside class="souche">
+      <p class="num">N° 001</p>
+      <dl class="champs">
+        <dt>Établi par</dt><dd>Yanis Moussi</dd>
+        <dt>Métier</dt><dd>Informatique : développement et support</dd>
+        <dt>Diplôme</dt><dd>Bachelor RPI, ISITECH Lyon, 2026</dd>
+        <dt>Secteur</dt><dd>Lyon, mobile en France et en Suisse</dd>
+        <dt>Langues</dt><dd>Français, anglais courant</dd>
+      </dl>
+      <p class="tampon">Disponible</p>
+    </aside>
+    <div class="corps">
+      <p class="entete">Carnet de réalisations</p>
+      <h1>Yanis Moussi</h1>
+      <p class="chapeau">J’ai remplacé un carnet à souches par une application utilisée chaque jour dans trois restaurants. Je l’ai observée, dessinée, codée, déployée, puis j’ai formé les équipes et assuré le support jusqu’à la fin de mon alternance.</p>
+      <p class="intro">Diplômé du Bachelor Responsable de Projets Informatiques (ISITECH Lyon), après deux ans d’alternance chez MEXI, où j’étais seul sur la partie applicative d’une chaîne de restauration. Je cherche un poste en informatique, en France ou en Suisse : développeur, informaticien support ou technicien, du moment qu’il y a des gens à aider et des choses à faire marcher.</p>
+      <p class="liens">
+        <a href="mailto:yanis.ms@icloud.com">yanis.ms@icloud.com</a>
+        <a href="https://github.com/Shawliiath">github.com/Shawliiath</a>
+      </p>
+      <nav class="sommaire" aria-label="Sommaire">
+        <a href="#my-orders"><b>002</b> My Orders</a>
+        <a href="#caisse"><b>003</b> La caisse</a>
+        <a href="#support"><b>004</b> Le support</a>
+        <a href="#habbozino"><b>005</b> HabboZino</a>
+        <a href="#parcours"><b>006</b> Parcours</a>
+        <a href="#savoir-faire"><b>007</b> Savoir-faire</a>
+      </nav>
+    </div>
+  </article>
+
+  <!-- bon 002 : my orders -->
+  <article class="bon" id="my-orders">
+    <aside class="souche">
+      <p class="num">N° 002</p>
+      <dl class="champs">
+        <dt>Pour</dt><dd>MEXI, chaîne MEXI KEBAB</dd>
+        <dt>Période</dt><dd>Oct. 2024 à juin 2025</dd>
+        <dt>Rôle</dt><dd>Seul, de l’observation à la production</dd>
+        <dt>Outils</dt><dd>React 18, Material UI, Cloud Firestore, PWA (Workbox), GitHub Actions, Chart.js</dd>
+      </dl>
+      <p class="tampon">Livré · mai 2025</p>
+    </aside>
+    <div class="corps">
+      <p class="entete">Alternance chez MEXI</p>
+      <h2>My Orders</h2>
+      <p class="chapeau">Le stock et les commandes fournisseurs, sur tablette, dans les trois restaurants de la chaîne.</p>
+
+      <h3>Avant</h3>
+      <p>Quand un produit manquait, voilà le trajet que suivait l’information :</p>
+      <ol class="trajet">
+        <li><b>01</b>Un employé constate qu’il manque du stock</li>
+        <li><b>02</b>Il l’écrit sur un carnet à souches</li>
+        <li><b>03</b>Il photographie la souche</li>
+        <li><b>04</b>Il l’envoie par messagerie</li>
+        <li><b>05</b>Le dirigeant passe la commande</li>
+      </ol>
+      <p class="note">Sur trois semaines, j’ai compté 62 bons : 9 raturés ou illisibles, 4 sans quantité. Quand une livraison arrivait incomplète, personne ne pouvait prouver ce qui avait été commandé.</p>
+
+      <figure class="tablette">
+        <img src="img/mo-commande.jpg" alt="Écran principal de My Orders : les catégories de produits avec leur photo et leur stock à gauche, le panier partagé à droite" width="1256" height="970">
+        <figcaption>L’écran de commande : chaque produit a sa photo (j’en ai pris plus de 130), le panier est le même sur toutes les tablettes du restaurant.</figcaption>
+      </figure>
+
+      <h3>Ce que j’ai fait, dans l’ordre</h3>
+      <table class="registre">
+        <tbody>
+          <tr><th>Oct. 2024</th><td>Sept séances d’observation dans les trois restaurants, sur le créneau où se font les commandes. Chaque compte rendu renvoyé au responsable du restaurant pour correction.</td></tr>
+          <tr><th>30 oct. 2024</th><td>Expression de besoin validée : 19 exigences, ramenées à un recto pour qu’elle soit lue.</td></tr>
+          <tr><th>Nov. 2024</th><td>Maquettes sur Figma, modèle de données Firestore, premières versions.</td></tr>
+          <tr><th>19 févr. 2025</th><td>Une refonte casse tout un soir, la seule copie saine a 11 jours. Le lendemain : dépôt Git, préproduction à chaque pull request, production à la fusion, le tout par GitHub Actions.</td></tr>
+          <tr><th>Mars 2025</th><td>Pilote dans un premier restaurant, six semaines, avec une fiche de formation A4 plastifiée posée à côté de la tablette.</td></tr>
+          <tr><th>Avril et mai 2025</th><td>Deuxième puis troisième restaurant, une demi-journée chacun.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="duo">
+        <figure>
+          <img src="img/mo-stock.jpg" alt="Écran du stock détaillé, avec filtres par catégorie et par niveau de stock" width="1241" height="971" loading="lazy">
+          <figcaption>Le stock détaillé, filtré par niveau : rupture, critique, faible.</figcaption>
+        </figure>
+        <figure>
+          <img src="img/mo-journal.jpg" alt="Journal des actions : chaque ajout et chaque suppression du panier, avec la date et l’heure" width="1241" height="972" loading="lazy">
+          <figcaption>Le journal : chaque geste est daté par le serveur.</figcaption>
+        </figure>
+      </div>
+
+      <h3>Trois décisions venues du terrain</h3>
+      <div class="feuillets">
+        <section class="feuillet">
+          <h4>Un clavier maison de 512 lignes</h4>
+          <p>Le plus ancien cuisinier du pilote gardait son carnet papier. Je lui ai demandé de passer une commande devant moi : en paysage, le clavier Android cachait le champ de saisie. J’ai écrit un clavier virtuel, déplaçable parce qu’il tape de la main droite. Une semaine plus tard il lâchait le carnet, et en juin c’est lui qui formait les saisonniers.</p>
+        </section>
+        <section class="feuillet">
+          <h4>Une preuve plutôt qu’une impression</h4>
+          <p>Un responsable voulait « pouvoir imprimer la commande ». Deux heures après, une livraison arrive avec deux bidons d’huile en moins et la souche est introuvable. Le vrai besoin était une preuve datée : chaque panier validé est archivé avec l’heure du serveur, consultable depuis n’importe quel appareil.</p>
+        </section>
+        <section class="feuillet">
+          <h4>Trente lignes contre les bugs fantômes</h4>
+          <p>Les tablettes ne rechargeaient jamais la page et tournaient sur du vieux code. Un contrôle de version de trente lignes compare la version en base à celle chargée et recharge tout seul : les signalements de bugs déjà corrigés ont disparu.</p>
+        </section>
+      </div>
+
+      <p class="resultat"><b>−35 %</b> d’écarts relevés à la réception des livraisons, entre l’hiver 2024 et le printemps 2025. C’est le chiffre que je peux défendre ; les autres mesures, et leurs limites, sont dans mon mémoire.</p>
+    </div>
+  </article>
+
+  <!-- bon 003 : la caisse -->
+  <article class="bon" id="caisse">
+    <aside class="souche">
+      <p class="num">N° 003</p>
+      <dl class="champs">
+        <dt>Pour</dt><dd>MEXI, chaîne MEXI KEBAB</dd>
+        <dt>Période</dt><dd>Juin 2025 à août 2026</dd>
+        <dt>Rôle</dt><dd>Conception et développement</dd>
+        <dt>Outils</dt><dd>React, Material UI, Firebase</dd>
+      </dl>
+      <p class="tampon">En salle · 2026</p>
+    </aside>
+    <div class="corps corps-ticket">
+      <div>
+        <p class="entete">Deuxième année d’alternance</p>
+        <h2>La caisse</h2>
+        <p class="chapeau">Une seule application pour trois postes : la borne où le client commande, la caisse, et l’écran de la cuisine.</p>
+        <p>Environ 9 500 lignes, déployées en salle entre avril et juin 2026. Ce que j’en retiens :</p>
+        <dl class="points">
+          <dt>Le paiement mixte</dt>
+          <dd>Le midi, un client sur cinq paie en partie en titres restaurant, en partie en carte ou en espèces. Je ne l’avais pas prévu au cadrage. Le module cumule les moyens de paiement et suit le reste dû en permanence, et tous les calculs se font en centimes entiers pour ne plus jamais perdre un centime dans une virgule.</dd>
+          <dt>Quatre heures plutôt qu’un statut</dt>
+          <dd>Le dirigeant voulait savoir combien de temps sépare le paiement de la remise du plateau. Chaque commande garde l’heure de sa création, de son paiement, de sa préparation et de sa remise : en juin 2026, ce temps moyen sort par restaurant et par tranche horaire.</dd>
+          <dt>Un écran lu à deux mètres</dt>
+          <dd>J’ai réglé la taille du texte sur place, à deux mètres, avec deux cuisiniers dont un porte des lunettes. Un samedi de rush, les commandes les plus anciennes sont passées en page 2 : le jour même, l’affichage est devenu une pile, avec un bandeau permanent pour les commandes en retard.</dd>
+        </dl>
+      </div>
+      <!-- ticket cuisine d'exemple, imprimé en css -->
+      <figure class="ticket" aria-label="Exemple de ticket de commande avec ses quatre heures">
+        <p class="t-tete">Commande 042</p>
+        <p class="t-ligne"><span>2 × Sandwich</span><span>formule</span></p>
+        <p class="t-ligne"><span>1 × Boisson</span><span>33 cl</span></p>
+        <p class="t-sep"></p>
+        <p class="t-ligne"><span>Créée</span><span>12:01:14</span></p>
+        <p class="t-ligne"><span>Payée</span><span>12:01:52</span></p>
+        <p class="t-ligne"><span>Préparée</span><span>12:07:30</span></p>
+        <p class="t-ligne"><span>Remise</span><span>12:08:05</span></p>
+        <p class="t-sep"></p>
+        <p class="t-pied">Payé : titres restaurant + carte</p>
+        <figcaption>Exemple de ticket : les quatre heures enregistrées pour chaque commande.</figcaption>
+      </figure>
+    </div>
+  </article>
+
+  <!-- bon 004 : le support -->
+  <article class="bon" id="support">
+    <aside class="souche">
+      <p class="num">N° 004</p>
+      <dl class="champs">
+        <dt>Pour</dt><dd>Les équipes des trois restaurants</dd>
+        <dt>Période</dt><dd>Mars 2025 à août 2026</dd>
+        <dt>Rythme</dt><dd>Environ un jour par semaine</dd>
+      </dl>
+      <p class="tampon">Suivi</p>
+    </aside>
+    <div class="corps">
+      <p class="entete">Après la mise en production</p>
+      <h2>Le support</h2>
+      <p class="chapeau">Livrer, c’est la moitié du travail. L’autre moitié, c’est que ça tienne pendant le service, avec des gens qui n’ont pas le temps de lire une notice.</p>
+      <table class="registre">
+        <tbody>
+          <tr><th>Former</th><td>Une fiche A4 plastifiée à côté de chaque tablette, des formations en salle, et un employé réticent devenu celui qui forme les saisonniers.</td></tr>
+          <tr><th>Répondre</th><td>Environ 40 signalements par an, dont une dizaine de vrais défauts : le reste, c’était de l’usage à expliquer ou un écran à repenser.</td></tr>
+          <tr><th>Prévenir</th><td>Après un correctif de trois lignes parti un vendredi soir en plein service (20 minutes pour revenir en arrière, 30 minutes de retour au papier), une règle tenue jusqu’au bout : pas de mise en production après le jeudi midi, et toujours un passage en préproduction sur une vraie tablette.</td></tr>
+          <tr><th>Sauvegarder</th><td>Des sauvegardes avec un test de restauration, une alerte sur le budget du cloud, un plan de continuité si le réseau ou le cloud tombe.</td></tr>
+          <tr><th>Transmettre</th><td>Un document de passation de 22 pages remis en juillet 2026, pour que la personne suivante ne reparte pas de zéro.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <!-- bon 005 : habbozino -->
+  <article class="bon bon-zino" id="habbozino">
+    <aside class="souche">
+      <p class="num">N° 005</p>
+      <dl class="champs">
+        <dt>Pour</dt><dd>Projet de fin d’études, devenu un vrai jeu en ligne</dd>
+        <dt>Période</dt><dd>Oct. 2024 à aujourd’hui</dd>
+        <dt>Équipe</dt><dd>À deux, plus une graphiste et un community manager</dd>
+        <dt>Outils</dt><dd>Java (émulateur Arcturus), React, PixiJS, PHP 8.4, Laravel, Filament, MySQL 8, nginx, Ubuntu, Cloudflare</dd>
+      </dl>
+      <p class="tampon">En ligne</p>
+    </aside>
+    <div class="corps">
+      <p class="entete">Projet personnel</p>
+      <h2 class="zino-titre"><img src="img/hz-logo.png" alt="HabboZino" width="772" height="136"></h2>
+      <p class="chapeau">Un jeu social en ligne, dans l’esprit de Habbo : des salles en 3D isométrique, des avatars, des objets rares, et une économie virtuelle, les émeraudes, qu’on peut reconvertir après vérification d’identité.</p>
+      <p>On l’a mené à deux, du début à la fin, en se partageant chaque partie selon les moments : l’un sur l’infrastructure pendant que l’autre écrivait le jeu, puis l’inverse. Le serveur de jeu en Java, le client dans le navigateur, le site et son administration, l’hébergement : on a touché à tout. <a href="https://habbozino.com">habbozino.com</a></p>
+
+      <figure class="ecran-jeu">
+        <img src="img/hz-jeu.jpg" alt="Le client HabboZino en jeu : une grande salle isométrique décorée, avec des avatars" width="1600" height="898" loading="lazy">
+        <figcaption>En jeu, dans le navigateur : le client Nitro (React et PixiJS), relié au serveur Java.</figcaption>
+      </figure>
+
+      <h3>Quelques problèmes qu’on a réglés</h3>
+      <table class="registre">
+        <tbody>
+          <tr><th>Sans le code source</th><td>Les objets en édition limitée recevaient des numéros de série au hasard, alors qu’un « 1/100 » vaut plus qu’un « 47/100 ». L’émulateur n’est distribué que compilé : décompilation, puis trois corrections directement dans le bytecode Java.</td></tr>
+          <tr><th>Trois entiers</th><td>Les avatars n’apparaissaient plus dans les salles. Le serveur envoyait trois champs de plus par avatar que le client ne lisait pas, et tout le flux binaire suivant était décalé. Trois lectures ajoutées dans le parser du client, et ces champs servent aujourd’hui aux bannières de profil vendues sur le site.</td></tr>
+          <tr><th>100 % de CPU</th><td>Des joueurs déconnectés au bout de dix à quinze minutes, un serveur à 100 % sans personne dessus. La console de l’émulateur lisait son entrée en boucle sans gérer la fin de fichier : une ligne dans le service systemd a suffi, une fois la cause trouvée.</td></tr>
+          <tr><th>Deux fois la même dépense</th><td>En relisant la boutique, une faille : deux requêtes simultanées pouvaient dépenser le même solde. Un verrou par joueur autour de chaque dépense, et des réclamations atomiques en base.</td></tr>
+          <tr><th>Zéro localhost</th><td>Un envoi manuel a mis en production une configuration pointant vers localhost et coupé le jeu plusieurs heures. Depuis, un script de déploiement en huit étapes qui refuse de partir s’il reste un seul « localhost ».</td></tr>
+        </tbody>
+      </table>
+
+      <div class="mur">
+        <figure><img src="img/hz-valeurs.jpg" alt="Page des objets rares : un dragon sur un piédestal, la cote du jour en bandeau défilant" width="1600" height="1000" loading="lazy"><figcaption>La cote des objets rares.</figcaption></figure>
+        <figure><img src="img/hz-staff.jpg" alt="Page de l’équipe : les avatars du staff réunis dans une scène isométrique" width="1600" height="1000" loading="lazy"><figcaption>L’équipe, en photo de groupe.</figcaption></figure>
+        <figure><img src="img/hz-badges.jpg" alt="Boutique de badges dessinée comme un distributeur automatique" width="1600" height="1000" loading="lazy"><figcaption>La boutique de badges, en distributeur.</figcaption></figure>
+        <figure><img src="img/hz-bannieres.jpg" alt="Boutique de bannières dessinée comme une cabine d’essayage avec un miroir" width="1600" height="1000" loading="lazy"><figcaption>Les bannières, à essayer dans une cabine.</figcaption></figure>
+      </div>
+      <p class="note">Les pages du site ont été redessinées une à une en pixel art à l’automne 2026, chacune autour d’un objet : un distributeur, une cabine d’essayage, une vitrine.</p>
+    </div>
+  </article>
+
+  <!-- bon 006 : parcours -->
+  <article class="bon" id="parcours">
+    <aside class="souche">
+      <p class="num">N° 006</p>
+      <dl class="champs">
+        <dt>Depuis</dt><dd>2019</dd>
+      </dl>
+    </aside>
+    <div class="corps">
+      <p class="entete">Formation et expériences</p>
+      <h2>Parcours</h2>
+      <table class="registre registre-large">
+        <tbody>
+          <tr><th>2024 à 2026</th><td><b>Alternant développeur, MEXI</b> (Villeurbanne). Applications de la chaîne MEXI KEBAB : My Orders, la caisse, le support des équipes, et la refonte du site vitrine en binôme avec le développeur senior. Trois semaines en entreprise, une semaine à l’école.</td></tr>
+          <tr><th>2023 à 2026</th><td><b>Bachelor Responsable de Projets Informatiques</b>, ISITECH Lyon. Diplômé en 2026.</td></tr>
+          <tr><th>2024 à 2026</th><td><b>HabboZino</b>, projet de fin d’études mené à deux, toujours en ligne.</td></tr>
+          <tr><th>2022 à 2023</th><td><b>BUT Informatique</b>, première année, IUT de Montreuil.</td></tr>
+          <tr><th>2019 à 2021</th><td><b>Baccalauréat STI2D</b>, lycée Blaise-Pascal, Charbonnières-les-Bains. En parallèle, serveur, plongeur et livreur le week-end dans un restaurant d’Oullins.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <!-- bon 007 : savoir-faire et contact -->
+  <article class="bon" id="savoir-faire">
+    <aside class="souche">
+      <p class="num">N° 007</p>
+      <dl class="champs">
+        <dt>Contact</dt><dd><a href="mailto:yanis.ms@icloud.com">yanis.ms@icloud.com</a></dd>
+        <dt>Code</dt><dd><a href="https://github.com/Shawliiath">github.com/Shawliiath</a></dd>
+        <dt>Permis</dt><dd>B</dd>
+      </dl>
+      <p class="tampon">À votre service</p>
+    </aside>
+    <div class="corps">
+      <p class="entete">Ce que je sais faire, avec la preuve</p>
+      <h2>Savoir-faire</h2>
+      <div class="colonnes">
+        <section>
+          <h3>Comprendre le besoin</h3>
+          <p>Observer avant de coder, écrire une expression de besoin, la faire valider, dessiner les écrans sur Figma. Preuve : My Orders, sept séances en salle avant la première ligne.</p>
+        </section>
+        <section>
+          <h3>Développer</h3>
+          <p>JavaScript, React, Material UI, PHP et Laravel, Java, SQL (MySQL), Firestore, API REST, Git. Preuve : My Orders, la caisse, HabboZino.</p>
+        </section>
+        <section>
+          <h3>Mettre en production</h3>
+          <p>GitHub Actions, préproduction, Firebase Hosting, serveur Ubuntu, nginx, Cloudflare, systemd, scripts de déploiement. Preuve : trois restaurants équipés, un jeu en ligne.</p>
+        </section>
+        <section>
+          <h3>Accompagner les utilisateurs</h3>
+          <p>Former des équipes non techniques, répondre aux signalements, documenter, sauvegarder, prévoir le plan B. Preuve : un an et demi de support, une passation de 22 pages.</p>
+        </section>
+      </div>
+      <p class="note">Ce que je travaille encore : les tests automatisés et le travail dans une grande équipe. C’est aussi pour ça que je cherche une équipe.</p>
+      <p class="fin">
+        <a class="ecrire" href="mailto:yanis.ms@icloud.com">M’écrire</a>
+      </p>
+    </div>
+  </article>
+
+</main>
+<footer class="pied">Yanis Moussi · 2026</footer>
+</body>
+</html>
