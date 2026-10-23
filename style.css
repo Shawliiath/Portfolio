@@ -1000,3 +1000,9 @@ html:not(.js) .etapes li::after{transform:scaleX(1)}
 .cc.sort .cc-grille,.spot.sort .spot-boite,.spot.sort .spot-res{animation:cc-sort .3s cubic-bezier(.4,0,.6,1) forwards}
 @keyframes fondu-sort{to{opacity:0}}
 @keyframes cc-sort{to{opacity:0;transform:translateY(-18px) scale(.97)}}
+/* deux captures côte à côte sous celle du jeu */
+.vitrine-duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(18px,2.4vw,32px);margin-top:clamp(28px,4vh,44px)}
+.vitrine-duo .vitrine{margin:0}
+.vitrine-duo .vitrine img{aspect-ratio:16 / 10;object-fit:cover;object-position:top center;border-radius:16px}
+.vitrine-duo figcaption{font-size:15px;margin-top:16px}
+@media (max-width: 700px){.vitrine-duo{grid-template-columns:minmax(0,1fr)}}
