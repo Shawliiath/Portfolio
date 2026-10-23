@@ -102,15 +102,18 @@ body{background:#000;color:#f5f5f7}
 .final{position:relative;padding:18vh 24px 9vh;text-align:center;overflow:hidden;background:radial-gradient(60% 70% at 50% 100%, #10213f 0%, #000 70%)}
 .final h2{margin:0;font:700 clamp(60px,11vw,170px)/.95 var(--sf-titre);letter-spacing:-.045em;background:linear-gradient(180deg,#fff 20%,#6e6e73);-webkit-background-clip:text;background-clip:text;color:transparent}
 .final-sous{max-width:640px;margin:22px auto 0;font:500 clamp(18px,1.6vw,22px)/1.45 var(--sf-titre);color:#86868b}
-.final-liens{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin:56px auto 0;max-width:980px}
-.final-lien{display:grid;gap:6px;min-width:250px;padding:22px 26px;border-radius:20px;background:#121214;color:#f5f5f7;text-decoration:none;text-align:left;font:600 19px/1.2 var(--sf-titre);letter-spacing:-.01em;box-shadow:inset 0 0 0 1px #232326;transition:background .25s,transform .25s,box-shadow .25s}
-.final-lien small{font:500 13px/1 var(--sf);color:#86868b;letter-spacing:0}
-.final-lien:hover{background:#1a1a1d;transform:translateY(-3px);box-shadow:inset 0 0 0 1px #3a3a3e,0 20px 40px -20px rgba(41,121,255,.5)}
+.final-liens{display:flex;flex-direction:column;align-items:center;gap:4px;margin:52px auto 0}
+/* pas de cadres : les coordonnées en grand, comme une fin de keynote */
+.final-lien{display:inline-flex;align-items:baseline;gap:.28em;color:#86868b;text-decoration:none;font:600 clamp(19px,1.8vw,24px)/1.4 var(--sf-titre);letter-spacing:-.015em;transition:color .25s}
+.final-lien:first-child{color:#f5f5f7}
+.final-lien::after{content:'›';color:#2997ff;font-weight:500;transition:transform .25s}
+.final-lien:hover{color:#f5f5f7}
+.final-lien:hover::after{transform:translateX(5px)}
+.final-lien:focus-visible{outline:2px solid #2997ff;outline-offset:6px;border-radius:8px}
 .signature{margin:80px 0 0;font:400 13px/1.4 var(--sf);color:#48484d}
 @media (max-width: 760px){
   .etapes{grid-template-columns:repeat(2,minmax(0,1fr));gap:34px 22px}
   .gestes li{padding:0 14px}
-  .final-lien{min-width:0;width:100%}
 }
 
 /* ------------------------------------------------------------------ */
@@ -235,7 +238,7 @@ body{background:#000;color:#f5f5f7}
 .ico-mail{background:linear-gradient(180deg,#1fb7ff,#1c6cf2)}
 .ico-tel{background:linear-gradient(180deg,#5ef27a,#22b33f)}
 .ico-tel svg{width:56%;height:56%}
-.bulle a{color:inherit;font-weight:600}
+.bulle a{color:inherit;font-weight:600;white-space:nowrap}
 .ico-mail svg{width:66%;height:66%}
 .ico-agenda{background:#fff;color:#1d1d1f;display:flex;flex-direction:column;justify-content:center;gap:0}
 .ag-jour{font:600 clamp(9px,1.25cqw,13px)/1 var(--sf);color:#ff3b30;text-transform:lowercase}
@@ -410,7 +413,7 @@ body{background:#000;color:#f5f5f7}
 .vis-prec{left:16px}.vis-suiv{right:16px}
 
 /* messages */
-.appli-messages{display:grid;grid-template-rows:auto minmax(0,1fr) auto;background:var(--cellule)}
+.appli-messages{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr) auto;background:var(--cellule)}
 .m-tete{position:relative;display:grid;justify-items:center;gap:4px;padding:40px 16px 10px;background:var(--saisie-fond);border-bottom:.5px solid var(--separateur)}
 .m-tete .a-retour{position:absolute;left:18px;top:48px}
 .w-avatar-petit{width:44px;font-size:15px}
@@ -457,8 +460,8 @@ body{background:#000;color:#f5f5f7}
   .notif{width:88cqw}
 }
 
-/* téléphone : le téléphone devient la tablette */
-@media (max-width: 820px){
+/* petite tablette en portrait : l'écran devient la tablette */
+@media (min-width: 601px) and (max-width: 820px){
   .scene{padding:0;min-height:0;overflow:visible}
   .pitch,.gestes,.ipad-bouton,.ipad-camera,.aura{display:none}
   .ipad{animation:none}
@@ -607,7 +610,7 @@ kbd{font:600 12px var(--sf);padding:1px 6px;border-radius:5px;border:1px solid #
 /* ------------------------------------------------------------------ */
 .ico-safari{background:linear-gradient(180deg,#fff,#e8e8ed)}
 .ico-safari svg{width:84%;height:84%}
-.appli-safari{display:grid;grid-template-rows:auto minmax(0,1fr);background:var(--groupe)}
+.appli-safari{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);background:var(--groupe)}
 .sf-barre{position:relative;display:flex;align-items:center;gap:10px;padding:32px 16px 10px;background:var(--saisie-fond);border-bottom:.5px solid var(--separateur)}
 .sf-barre .a-retour{flex:none}
 .sf-bouton{flex:none;display:grid;place-items:center;width:34px;height:34px;padding:0;border:0;border-radius:9px;background:none;cursor:pointer;color:var(--bleu-ios)}
@@ -710,3 +713,151 @@ kbd{font:600 12px var(--sf);padding:1px 6px;border-radius:5px;border:1px solid #
 .spec b{font:600 17px/1.3 var(--sf);color:#f5f5f7;letter-spacing:-.01em}
 .spec small{font:400 14px/1.4 var(--sf);color:#86868b}
 @media (max-width: 900px){.spec{grid-template-columns:minmax(0,1fr);gap:16px}.spec ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* ------------------------------------------------------------------ */
+/* sur un téléphone, la tablette devient un iphone                       */
+/* ------------------------------------------------------------------ */
+.ilot,.be-signal,.v-cadenas,.v-rapide,.g-doigt{display:none}
+/* la lampe de l'iphone éclaire la table */
+.ipad.lampe .aura{--a1:rgba(255,255,255,.95);--a2:rgba(255,248,230,.8);--a3:rgba(255,255,255,.7);opacity:.75}
+@media (max-width: 600px){
+  .scene{min-height:0;padding:20px 0 0;overflow:hidden}
+  /* l'iphone d'abord, il tient en entier dans l'écran ; le nom et les gestes viennent dessous */
+  .ipad{order:1}
+  .pitch{order:2;margin:64px 0 0;padding:0 20px}
+  .gestes{order:3;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 0;width:100%;margin:30px 0 0;padding:0 16px}
+  .gestes li,.gestes li + li{padding:0 10px;border:0}
+  .gestes .g-clavier{display:none}
+  .gestes li.g-doigt{display:grid}
+  .gestes b.g-doigt{display:block}
+
+  /* les proportions d'un iphone 15 pro : un écran de 393 sur 852, un cadre fin en titane */
+  .ipad{--ipad-l:max(250px, min(380px, calc(100vw - 56px), calc((100svh - 44px) / 2.09)));aspect-ratio:1 / 2.09}
+  .ipad-cadre{border-radius:calc(var(--ipad-l) * .165);padding:calc(var(--ipad-l) * .034);background:#050505;
+    box-shadow:
+      0 0 0 1.5px #2b2b2d,
+      0 0 0 3px #a9a59e,
+      0 0 0 4px #5e5c58,
+      0 24px 50px -12px rgba(0,0,0,.75),
+      0 50px 100px -30px rgba(0,0,0,.8)}
+  .ecran{border-radius:calc(var(--ipad-l) * .132)}
+  .ipad-camera{display:none}
+  .aura{display:block;inset:-6% -40% -8%;filter:blur(70px) saturate(1.1);opacity:.42}
+  /* les boutons sur les tranches : action et volume à gauche, le bouton latéral à droite */
+  .ipad::before{content:"";position:absolute;left:-7.5px;top:17%;width:3.5px;height:3.6%;border-radius:2px 0 0 2px;background:linear-gradient(90deg,#8d8a85,#cdc9c2)}
+  .ipad-bouton{width:3.5px;border-radius:2px 0 0 2px;background:linear-gradient(90deg,#8d8a85,#cdc9c2);-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;touch-action:manipulation}
+  .ipad-bouton::before{inset:-6px -14px}
+  .ipad-bouton:active{transform:translateX(1.5px)}
+  .ipad-bouton-vol{left:-7.5px;top:23.5%;height:7%}
+  .ipad-bouton-vol2{left:-7.5px;top:32%;height:7%}
+  .ipad-bouton-haut{left:auto;right:-7.5px;top:27%;height:11%;border-radius:0 2px 2px 0;background:linear-gradient(270deg,#8d8a85,#cdc9c2)}
+  .ipad-bouton-haut:active{transform:translateX(-1.5px)}
+
+  /* la dynamic island, et la barre d'état de part et d'autre */
+  .ilot{display:block;position:absolute;z-index:100;top:2.8cqw;left:50%;width:31.5cqw;height:9.3cqw;margin-left:-15.75cqw;border-radius:9cqw;background:#000;pointer-events:none}
+  .ilot::after{content:"";position:absolute;right:3.2cqw;top:50%;width:3cqw;height:3cqw;margin-top:-1.5cqw;border-radius:50%;background:radial-gradient(circle at 35% 35%,#26344c 0 22%,#07080b 66%)}
+  .barre-etat{display:grid;grid-template-columns:minmax(0,1fr) 31.5cqw minmax(0,1fr);align-items:start;height:13.7cqw;padding:5.3cqw 0 0;font:600 4.1cqw/1 var(--sf)}
+  .barre-etat > span:first-child{grid-column:1;justify-self:center;padding-left:3cqw}
+  #be-date,#be-batt{display:none}
+  .be-droite{grid-column:3;justify-self:center;gap:1.4cqw;padding-right:3cqw}
+  .be-droite svg{width:4.3cqw;height:3.1cqw}
+  .be-droite .be-signal{display:block;width:4.4cqw;height:2.9cqw}
+  .batterie{width:6.4cqw;height:3.1cqw;border-width:1px;border-radius:1cqw}
+  .batterie::after{right:-1.1cqw;top:.85cqw;width:.6cqw;height:1.2cqw}
+  .zone-cc{width:34cqw;height:13.7cqw}
+  .barre-accueil{width:34cqw;height:1.35cqw;margin-left:-17cqw;bottom:2.1cqw}
+
+  /* l'écran verrouillé, comme sur ios : le cadenas, l'heure en grand, la notification en bas */
+  .verrou{padding-top:13.8cqw}
+  .v-cadenas{display:block;width:4.6cqw;height:4.6cqw;margin-bottom:1.6cqw;color:rgba(255,255,255,.92)}
+  .vc-anse{transition:transform .3s}
+  .verrou.part .vc-anse{transform:translateY(-2.5px)}
+  .v-date{font:600 4.8cqw/1.2 var(--sf)}
+  .v-heure{font:700 24cqw/1 var(--sf-titre);letter-spacing:-.02em}
+  .notif{width:93cqw;margin:auto 0 33cqw;padding:3cqw 3.4cqw;gap:3cqw;border-radius:5.4cqw}
+  .notif-ico{width:9.6cqw!important;height:9.6cqw!important;border-radius:2.3cqw!important}
+  .notif-txt{font-size:max(11px,3.6cqw)}
+  .notif-tete{font-size:max(10px,3.2cqw)}
+  .notif-tete b{font-size:max(9.5px,3cqw)}
+  .v-aide{bottom:6.2cqw;font-size:max(10px,3.2cqw)}
+  .v-rapide{display:grid;place-items:center;position:absolute;bottom:13cqw;width:12.7cqw;height:12.7cqw;padding:0;border:0;border-radius:50%;cursor:pointer;color:#fff;
+    background:rgba(28,28,32,.42);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);transition:background .2s,color .2s,transform .15s}
+  .v-rapide svg{width:50%;height:50%}
+  .v-rapide:active{transform:scale(1.14)}
+  .v-lampe{left:11.7cqw}
+  .v-photo{right:11.7cqw}
+  .v-lampe[aria-pressed="true"]{background:#fff;color:#1d1d1f}
+
+  /* l'accueil : la grille de l'iphone, 4 colonnes, des widgets petits (2 x 2) et moyens (4 x 2) */
+  .accueil{padding:0}
+  .page{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:none;grid-auto-rows:15.3cqw;grid-auto-flow:row dense;gap:11.1cqw 5.6cqw;align-content:start;
+    padding:17.5cqw 5.5cqw 0;overflow:visible;-webkit-mask-image:none;mask-image:none}
+  .page > .app{order:0;flex:none;min-width:0}
+  .page > .widget{flex:none;grid-row:span 2;min-height:0}
+  .app{gap:1.3cqw}
+  .app-ico{width:15.3cqw}
+  .app-nom,.page > .app .app-nom{width:max-content;max-width:24cqw;padding:0;font-size:max(9.5px,3cqw);line-height:1.15;white-space:normal}
+  .widget{gap:1cqw;padding:3.8cqw 4.2cqw;border-radius:5.6cqw}
+  .w-profil{grid-column:span 4;grid-template-columns:auto minmax(0,1fr);grid-template-rows:1fr;align-items:center;column-gap:3.8cqw;padding:4cqw 4.4cqw}
+  .w-profil-phrase,.w-profil-bas{display:none}
+  .w-avatar{width:17cqw;font-size:5.8cqw}
+  .w-profil-txt{gap:.6cqw}
+  .w-profil-txt b{font-size:max(15px,5.4cqw)}
+  .w-profil-txt > span{font-size:max(10.5px,3.4cqw);line-height:1.3}
+  .w-dispo{margin-top:.6cqw;font-size:max(10px,3.2cqw)!important}
+  .w-agenda{grid-column:span 2;gap:1.8cqw;padding:3.6cqw 3.8cqw;overflow:hidden}
+  .w-agenda-tete,.w-note-tete{font-size:max(9px,2.9cqw)}
+  .w-agenda-ligne{grid-template-columns:1cqw minmax(0,1fr);gap:2cqw;font-size:max(9.5px,3cqw)}
+  .w-agenda-ligne:nth-child(n+4){display:none}
+  .w-photo{grid-column:span 2}
+  .w-photo-legende{padding:3cqw 3.4cqw;font-size:max(9.5px,3cqw)}
+  .w-photo-legende b{font-size:max(11px,3.8cqw)}
+  .w-note{grid-column:span 4;gap:1.2cqw}
+  .w-note b{font-size:max(12px,4cqw)}
+  .w-note span:last-child{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;font-size:max(10px,3.3cqw);line-height:1.35}
+  .w-astuces{display:none}
+  .points{gap:2cqw;padding:0 0 2.4cqw}
+  .points button{width:2cqw;height:2cqw}
+  .bouton-chercher{gap:1.4cqw;margin:0 0 3cqw;padding:1.9cqw 3.6cqw;border-radius:4cqw;font-size:max(10.5px,3.4cqw)}
+  .bouton-chercher svg{width:3.4cqw;height:3.4cqw}
+  .dock{align-self:stretch;justify-content:space-around;gap:0;margin:0 2.6cqw 2.6cqw;padding:3.8cqw 2cqw;border-radius:9.5cqw}
+  .dock .app-ico{width:15.3cqw}
+  .dock [data-ouvre="orders"],.dock [data-ouvre="photos"]{display:none}
+  .ecran.edition .barre-etat{opacity:0}
+  .fin-edition{top:3.4cqw;right:5cqw}
+
+  /* les applis : tout descend sous la dynamic island */
+  .a-haut{height:calc(13.7cqw + 44px);padding:13.7cqw 12px 0}
+  .a-defile{padding:calc(13.7cqw + 52px) 18px 56px}
+  .a-titre{font-size:max(26px,8.6cqw)}
+  .sf-barre{padding-top:13.4cqw}
+  .m-tete{padding-top:13.4cqw}
+  .m-tete .a-retour{top:calc(13.4cqw + 8px);left:12px}
+  .cam-haut{padding-top:13.4cqw}
+  .vis-haut{padding-top:14cqw}
+  .cc{padding:15cqw 4cqw 4cqw}
+  .cc-grille{width:100%}
+  .hud-volume{top:14cqw;width:64cqw;margin-left:-32cqw}
+  .spot{padding-top:16cqw}
+  .appli.ferme{border-radius:30%}
+  /* quand le petit titre arrive, le bouton retour ne garde que sa flèche, comme sur ios */
+  .appli.titre-parti .a-haut .a-retour{font-size:0;gap:0}
+  .a-petit-titre{max-width:62cqw;overflow:hidden;text-overflow:ellipsis}
+  #sf-onglet{display:none}
+  .spot-res li{grid-template-columns:30px minmax(0,1fr)}
+  .spot-res .r-app{display:none}
+  .et-curseur{width:84cqw}
+  .et-texte{font-size:min(15px,5.4cqw);white-space:nowrap}
+  .sf-accueil{padding:24px 16px 50px}
+  .sf-favoris{gap:14px}
+}
+/* le plus petit iphone : on allège les widgets et les listes */
+@media (max-width: 600px){
+  @container ecran (max-width: 260px){
+    .w-agenda-ligne:nth-child(n+3){display:none}
+    .w-avatar{width:14cqw;font-size:5cqw}
+    .w-profil-txt > span:not(.w-dispo){display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+    .liste > li{flex-direction:column;align-items:stretch;gap:2px}
+    .liste > li > b{text-align:left}
+  }
+}
