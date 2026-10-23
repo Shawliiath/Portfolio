@@ -36,19 +36,21 @@
     etiquettes.forEach(s => $$(s).forEach(el => el.setAttribute('aria-label', el.getAttribute('aria-label').replace(tel ? 'la tablette' : 'le téléphone', tel ? 'le téléphone' : 'la tablette'))));
     // la barre d'adresse de l'iphone est courte : le texte d'attente aussi
     $('#sf-url').placeholder = tel ? 'Rechercher' : 'Rechercher sur Google ou saisir un site';
+    $('#spot-q').placeholder = tel ? 'Rechercher' : 'Rechercher : react, linux, support…';
   };
   nommer(); enIphone.addEventListener('change', nommer);
 
   // ---------------------------------------------------------------
   // déverrouiller : un toucher, un glissé vers le haut, ou entrée
   // ---------------------------------------------------------------
-  ecran.classList.add('verrouille');
+  ecran.classList.add('verrouille'); $('#accueil').inert = true;
   const deverrouiller = () => {
     if (!ecran.classList.contains('verrouille')) return;
-    ecran.classList.remove('verrouille');
+    ecran.classList.remove('verrouille'); $('#accueil').inert = false;
     verrou.classList.add('part');
     setTimeout(() => { verrou.hidden = true; }, doux ? 0 : 600);
     setTimeout(() => ecran.focus({ preventScroll: true }), doux ? 0 : 450);
+    devoiler();
   };
   let depart = null;
   verrou.addEventListener('pointerdown', e => { depart = e.clientY; });
@@ -58,8 +60,15 @@
     depart = null;
   });
   verrou.addEventListener('click', deverrouiller);
+  // au doigt, le navigateur garde le glissé vers le haut pour faire défiler la page : on le reprend pour ouvrir
+  let yDoigt = null;
+  verrou.addEventListener('touchstart', e => { yDoigt = e.touches[0].clientY; }, { passive: true });
+  verrou.addEventListener('touchmove', e => { if (yDoigt !== null && e.touches[0].clientY < yDoigt && e.cancelable) e.preventDefault(); }, { passive: false });
   addEventListener('keydown', e => {
-    if (ecran.classList.contains('verrouille') && (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowUp')) { e.preventDefault(); deverrouiller(); }
+    if (!ecran.classList.contains('verrouille')) return;
+    // seulement sur l'écran lui-même : les liens, les boutons et l'espace de la page gardent leur rôle
+    const ici = e.target === ecran || (e.target === document.body && e.key === 'Enter');
+    if (ici && (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowUp')) { e.preventDefault(); deverrouiller(); }
   });
   // la notification ouvre directement la conversation
   $('#notif').addEventListener('click', e => { e.stopPropagation(); deverrouiller(); setTimeout(() => ouvrir('messages', $('.dock [data-ouvre="messages"]')), doux ? 0 : 520); });
@@ -85,6 +94,12 @@
     $$('.page', piste).forEach((p, j) => p.inert = j !== page);
   };
   allerPage(0, false);
+  // la première fois, l'accueil laisse voir le bord de la page 2 : on comprend qu'il y en a une
+  let devoile = false;
+  function devoiler() {
+    if (devoile || doux) return; devoile = true;
+    setTimeout(() => { if (page !== 0 || ouverte || !$('#spot').hidden) return; piste.style.transform = 'translateX(-8%)'; setTimeout(() => allerPage(0), 450); }, 900);
+  }
   points.forEach((p, j) => p.addEventListener('click', () => allerPage(j)));
   let glisse = null;
   pages.addEventListener('pointerdown', e => {
@@ -122,7 +137,8 @@
     const t = Date.now(); if (t - roue < 450) return; roue = t;
     allerPage(page + (e.deltaX > 0 ? 1 : -1));
   }, { passive: false });
-  pages.addEventListener('keydown', e => {
+  ecran.addEventListener('keydown', e => {
+    if (ouverte || e.target.closest('.cc, .spot')) return;
     if (e.key === 'ArrowRight') allerPage(page + 1);
     if (e.key === 'ArrowLeft') allerPage(page - 1);
   });
@@ -148,7 +164,7 @@
     a.getBoundingClientRect();
     a.classList.remove('ferme');
     ouverte = a;
-    ecran.classList.add('app-ouverte');
+    ecran.classList.add('app-ouverte'); $('#accueil').inert = true;
     ecran.classList.toggle('app-claire', claires.includes(nom));
     // le focus va sur l'appli elle-même : le clavier part de là, sans cadre bleu sur le bouton retour au toucher
     a.tabIndex = -1; a.focus({ preventScroll: true });
@@ -165,6 +181,7 @@
     a.classList.add('ferme');
     ecran.classList.remove('app-ouverte', 'app-claire');
     setTimeout(() => { if (ouverte !== a) a.hidden = true; }, vite || doux ? 0 : 420);
+    if (!ecran.classList.contains('verrouille')) $('#accueil').inert = false;
     source?.focus({ preventScroll: true });
   }
   $$('[data-ouvre]').forEach(b => b.addEventListener('click', () => ouvrir(b.dataset.ouvre, b)));
@@ -241,7 +258,7 @@
     $('#vis-fermer').focus();
   }
   grille.addEventListener('click', e => { const b = e.target.closest('button'); if (b) ouvrirVisionneuse($$('button', grille).indexOf(b)); });
-  function fermerVisionneuse() { vis.hidden = true; }
+  function fermerVisionneuse() { const i = indexVis(); vis.hidden = true; $$('button', grille)[i]?.focus({ preventScroll: true }); }
   const visPas = k => visPiste.scrollBy({ left: k * visPiste.clientWidth, behavior: 'smooth' });
   $('.vis-prec').addEventListener('click', () => visPas(-1));
   $('.vis-suiv').addEventListener('click', () => visPas(1));
@@ -257,16 +274,20 @@
     if (lancee) return; lancee = true;
     const bulles = $$('.bulle[data-attente]', fil);
     for (const b of bulles) {
+      if (!b.hasAttribute('data-attente')) return;
       if (!doux) {
         const ecrit = document.createElement('p'); ecrit.className = 'bulle lui ecrit'; ecrit.innerHTML = '<i></i><i></i><i></i>';
         ecrit.setAttribute('aria-hidden', 'true');
         fil.append(ecrit); fil.scrollTop = fil.scrollHeight;
         await new Promise(r => setTimeout(r, 380 + Math.min(900, b.textContent.length * 9)));
         ecrit.remove();
+        if (!b.hasAttribute('data-attente')) return;
       }
       b.removeAttribute('data-attente'); fil.append(b); fil.scrollTop = fil.scrollHeight;
     }
   }
+  // si on écrit avant la fin, les messages de yanis arrivent d'un coup, avant le vôtre
+  const toutAfficher = () => { $$('.bulle.ecrit', fil).forEach(n => n.remove()); $$('.bulle[data-attente]', fil).forEach(b => { b.removeAttribute('data-attente'); fil.append(b); }); };
   $('#m-saisie').addEventListener('submit', e => {
     e.preventDefault();
     const champ = $('#m-texte'), texte = champ.value.trim();
@@ -274,10 +295,11 @@
     const b = document.createElement('p'); b.className = 'bulle moi'; b.textContent = texte;
     const st = document.createElement('p'); st.className = 'm-statut'; st.textContent = 'Ouverture de votre messagerie…';
     $$('.m-statut', fil).forEach(s => s.remove());
+    toutAfficher();
     fil.append(b, st); fil.scrollTop = fil.scrollHeight; champ.value = '';
     setTimeout(() => {
       location.href = `mailto:yanis.ms@icloud.com?subject=${encodeURIComponent('Message depuis ton portfolio')}&body=${encodeURIComponent(texte)}`;
-      st.textContent = 'Envoyé depuis votre messagerie';
+      st.textContent = 'Plus qu’à l’envoyer depuis votre messagerie. Rien ne s’ouvre ? Écrivez à yanis.ms@icloud.com';
     }, doux ? 0 : 650);
   });
 
@@ -403,9 +425,10 @@
   };
   const ouvrirSpot = () => { if (ecran.classList.contains('verrouille')) deverrouiller(); fermerCC(); spot.hidden = false; q.value = ''; resultats.innerHTML = ''; setTimeout(() => q.focus(), 30); };
   const fermerSpot = () => { spot.hidden = true; };
+  $('#spot-annuler').addEventListener('click', fermerSpot);
   function aller(it) {
     fermerSpot();
-    ouvrir(it.appli, $(`.page [data-ouvre="${it.appli}"], .dock [data-ouvre="${it.appli}"]`));
+    ouvrir(it.appli, $$(`.page [data-ouvre="${it.appli}"], .dock [data-ouvre="${it.appli}"]`).find(el => !el.closest('[inert]') && el.offsetParent));
     if (!it.el) return;
     setTimeout(() => {
       // si la ligne est dans un onglet caché ou un pli fermé, on l'ouvre d'abord
@@ -432,7 +455,16 @@
   // glisser vers le bas sur l'accueil ouvre aussi la recherche, comme sur la vraie
   let ySpot = null;
   pages.addEventListener('pointerdown', e => { ySpot = e.clientY; });
-  pages.addEventListener('pointerup', e => { if (ySpot !== null && e.clientY - ySpot > 70 && !ecran.classList.contains('edition')) ouvrirSpot(); ySpot = null; });
+  pages.addEventListener('pointerup', e => {
+    if (ySpot !== null && e.clientY - ySpot > 70 && !ecran.classList.contains('edition')) {
+      ouvrirSpot();
+      // le clic qui suit le glissé ne doit pas ouvrir le widget dessous
+      const bloque = ev => { ev.stopPropagation(); ev.preventDefault(); };
+      pages.addEventListener('click', bloque, { capture: true, once: true });
+      setTimeout(() => pages.removeEventListener('click', bloque, { capture: true }), 50);
+    }
+    ySpot = null;
+  });
 
   // ---------------------------------------------------------------
   // l'appui long : les icônes tremblent et se déplacent, l'ordre est gardé
@@ -464,6 +496,18 @@
   const relache = () => { if (appui) { clearTimeout(appui.t); appui = null; } if (porte) poser(); };
   pages.addEventListener('dragstart', e => e.preventDefault());
   pages.addEventListener('pointerup', relache); pages.addEventListener('pointercancel', relache);
+  // au doigt le navigateur garde les glissés verticaux pour lui, on reprend ceux qui sont à nous
+  let tDoigt = null;
+  pages.addEventListener('touchstart', e => { tDoigt = { x: e.touches[0].clientX, y: e.touches[0].clientY }; }, { passive: true });
+  pages.addEventListener('touchmove', e => {
+    if (!tDoigt || !e.cancelable) return;
+    // une icône portée après l'appui long : la page ne bouge pas
+    if (porte) { e.preventDefault(); return; }
+    // vers le bas avec la page tout en haut : c'est la recherche
+    const dx = e.touches[0].clientX - tDoigt.x, dy = e.touches[0].clientY - tDoigt.y;
+    const enHaut = scrollY <= 0 && (e.target.closest('.page')?.scrollTop || 0) <= 0;
+    if (enHaut && dy > 0 && dy > Math.abs(dx) && !ecran.classList.contains('edition')) e.preventDefault();
+  }, { passive: false });
   function prendre(app, e) {
     const r = app.getBoundingClientRect();
     porte = { app, dx: e.clientX - r.left, dy: e.clientY - r.top, id: e.pointerId };
@@ -525,7 +569,7 @@
     if (ouverte) fermer(true);
     spot.hidden = true; cc.hidden = true; if (ecran.classList.contains('edition')) finEdition();
     verrou.hidden = false; verrou.classList.remove('part');
-    ecran.classList.add('verrouille');
+    ecran.classList.add('verrouille'); $('#accueil').inert = true;
   }
   const veille = $('#bouton-veille'), eteindre = $('#eteindre'), poignee = $('#et-poignee'), demarrage = $('#demarrage');
   let horsTension = false, appuiLong = false, tVeille = 0;
@@ -681,10 +725,14 @@
       const cams = (await navigator.mediaDevices.enumerateDevices()).filter(d => d.kind === 'videoinput');
       retourner.disabled = cams.length < 2;
     } catch (e) {
-      montrerMsg(e.name === 'NotAllowedError' ? 'La caméra est refusée. Autorisez-la dans votre navigateur pour prendre une photo.' : 'Pas de caméra disponible sur cet appareil.');
+      montrerMsg(e.name === 'NotAllowedError' ? 'La caméra est refusée. Autorisez-la dans votre navigateur pour prendre une photo.' : 'Pas de caméra disponible sur cet appareil.', e.name === 'NotAllowedError');
     }
   }
-  function montrerMsg(t) { camMsg.textContent = t; camMsg.hidden = false; declencheur.disabled = true; }
+  function montrerMsg(t, reessayer = false) {
+    camMsg.textContent = t;
+    if (reessayer) { const r = document.createElement('button'); r.type = 'button'; r.className = 'cam-reessayer'; r.textContent = 'Réessayer'; r.addEventListener('click', demarrerCamera); camMsg.append(r); }
+    camMsg.hidden = false; declencheur.disabled = true; retourner.disabled = true;
+  }
   function arreterCamera() { flux?.getTracks().forEach(t => t.stop()); flux = null; video.srcObject = null; }
   retourner.addEventListener('click', () => { face = face === 'user' ? 'environment' : 'user'; demarrerCamera(); });
   declencheur.addEventListener('click', async () => {
