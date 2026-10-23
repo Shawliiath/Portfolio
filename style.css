@@ -995,3 +995,8 @@ html:not(.js) .etapes li::after{transform:scaleX(1)}
   .vitrine img{transform:none;opacity:1}
   .js .allume.pret span{color:#f5f5f7}
 }
+/* le centre de contrôle et la recherche se referment en douceur */
+.cc.sort,.spot.sort{animation:fondu-sort .3s ease forwards;pointer-events:none}
+.cc.sort .cc-grille,.spot.sort .spot-boite,.spot.sort .spot-res{animation:cc-sort .3s cubic-bezier(.4,0,.6,1) forwards}
+@keyframes fondu-sort{to{opacity:0}}
+@keyframes cc-sort{to{opacity:0;transform:translateY(-18px) scale(.97)}}
