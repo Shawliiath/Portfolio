@@ -20,6 +20,23 @@
   };
   tic(); setInterval(tic, 5000);
 
+  // sur un téléphone, la tablette devient un iphone : on parle alors de téléphone
+  const enIphone = matchMedia('(max-width: 600px)');
+  const mots = [
+    ['.notif-msg', 'ma tablette', 'mon téléphone'],
+    ['#deverrouiller .vh', 'Ouvrir la tablette', 'Ouvrir le téléphone'],
+    ['.saut', 'Aller à la tablette', 'Aller au téléphone'],
+    ['#app-photos .a-chapeau', 'de la tablette', 'du téléphone'],
+    ['#app-safari .liste-titres li:first-child span', 'dans la tablette', 'dans le téléphone'],
+  ];
+  const etiquettes = ['#bouton-veille', '#eteindre', '#et-poignee', '.gestes'];
+  const nommer = () => {
+    const tel = enIphone.matches, [de, vers] = tel ? [1, 2] : [2, 1];
+    mots.forEach(m => $$(m[0]).forEach(el => { el.textContent = el.textContent.replace(m[de], m[vers]); }));
+    etiquettes.forEach(s => $$(s).forEach(el => el.setAttribute('aria-label', el.getAttribute('aria-label').replace(tel ? 'la tablette' : 'le téléphone', tel ? 'le téléphone' : 'la tablette'))));
+  };
+  nommer(); enIphone.addEventListener('change', nommer);
+
   // ---------------------------------------------------------------
   // déverrouiller : un toucher, un glissé vers le haut, ou entrée
   // ---------------------------------------------------------------
@@ -44,6 +61,14 @@
   });
   // la notification ouvre directement la conversation
   $('#notif').addEventListener('click', e => { e.stopPropagation(); deverrouiller(); setTimeout(() => ouvrir('messages', $('.dock [data-ouvre="messages"]')), doux ? 0 : 520); });
+  // sur l'iphone, en bas de l'écran verrouillé : la lampe éclaire la table, l'appareil photo s'ouvre directement
+  const lampe = $('#v-lampe');
+  lampe.addEventListener('click', e => {
+    e.stopPropagation();
+    const oui = lampe.getAttribute('aria-pressed') !== 'true';
+    lampe.setAttribute('aria-pressed', String(oui)); $('#ipad').classList.toggle('lampe', oui); navigator.vibrate?.(10);
+  });
+  $('#v-photo').addEventListener('click', e => { e.stopPropagation(); deverrouiller(); setTimeout(() => ouvrir('camera', $('.dock [data-ouvre="camera"]')), doux ? 0 : 520); });
 
   // ---------------------------------------------------------------
   // les pages de l'accueil : on glisse au doigt, à la souris ou au trackpad

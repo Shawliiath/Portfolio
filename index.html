@@ -32,11 +32,13 @@
     <div class="ipad-cadre">
       <span class="ipad-camera" aria-hidden="true"></span>
       <div class="ecran" id="ecran" tabindex="-1">
+        <span class="ilot" aria-hidden="true"></span>
         <div class="fond-ecran" aria-hidden="true"></div>
 
         <div class="barre-etat" aria-hidden="true">
           <span><b id="be-heure">9:41</b><span id="be-date">jeu. 22 oct.</span></span>
           <span class="be-droite">
+            <svg viewBox="0 0 18 12" class="be-signal"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
             <svg viewBox="0 0 20 14" id="be-wifi"><path d="M10 13.2 7.6 10.4a3.4 3.4 0 0 1 4.8 0zM4.9 7.9a7.3 7.3 0 0 1 10.2 0l-1.6 1.7a5 5 0 0 0-7 0zM2.2 5.2a11.2 11.2 0 0 1 15.6 0l-1.6 1.7a8.8 8.8 0 0 0-12.4 0z"/></svg>
             <span id="be-batt">100 %</span>
             <i class="batterie" id="be-batterie"><i></i></i>
@@ -58,6 +60,7 @@
 
         <!-- l'écran verrouillé : l'heure, et une notification de yanis -->
         <section class="verrou" id="verrou" aria-label="Écran verrouillé">
+          <svg class="v-cadenas" viewBox="0 0 24 24" aria-hidden="true"><path class="vc-anse" d="M8 11.5V8.5a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2.2"/><rect x="5.5" y="11" width="13" height="9.5" rx="2.4" fill="currentColor"/></svg>
           <p class="v-date" id="v-date">jeudi 22 octobre</p>
           <p class="v-heure" id="v-heure">9:41</p>
           <button type="button" class="notif" id="notif">
@@ -69,6 +72,9 @@
             </span>
           </button>
           <p class="v-aide" aria-hidden="true">Glissez vers le haut pour ouvrir</p>
+          <!-- sur l'iphone : la lampe et l'appareil photo, en bas de l'écran verrouillé -->
+          <button type="button" class="v-rapide v-lampe" id="v-lampe" aria-pressed="false" aria-label="Lampe torche"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 2.5h11v2.6l-2.6 4v11.4a1.2 1.2 0 0 1-1.2 1.2h-3.4a1.2 1.2 0 0 1-1.2-1.2V9.1l-2.6-4z" fill="currentColor"/><path d="M12 12v3.4" stroke="#8e8e93" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+          <button type="button" class="v-rapide v-photo" id="v-photo" aria-label="Ouvrir l’appareil photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.2 6.2 9.4 4.5h5.2l1.2 1.7H19a2 2 0 0 1 2 2v9.3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8.2a2 2 0 0 1 2-2z" fill="currentColor"/><circle cx="12" cy="12.8" r="3.6" fill="none" stroke="#3a3a3c" stroke-width="1.6"/></svg></button>
           <button type="button" class="barre-accueil v-barre" id="deverrouiller"><span class="vh">Ouvrir la tablette</span></button>
         </section>
 
@@ -490,9 +496,10 @@
 
   <ul class="gestes" aria-label="Ce qu’on peut faire avec la tablette">
     <li><b>Coin en haut à droite</b>le centre de contrôle</li>
-    <li><b><kbd>⌘</kbd> <kbd>K</kbd></b>tout chercher</li>
+    <li class="g-clavier"><b><kbd>⌘</kbd> <kbd>K</kbd></b>tout chercher</li>
+    <li class="g-doigt"><b>Glisser vers le bas</b>tout chercher</li>
     <li><b>Appui long</b>déplacer les icônes</li>
-    <li><b>Bouton du haut</b>verrouiller, éteindre</li>
+    <li><b class="g-clavier">Bouton du haut</b><b class="g-doigt">Bouton sur le côté</b>verrouiller, éteindre</li>
   </ul>
 </main>
 
@@ -539,9 +546,9 @@
   <h2>Parlons-en.</h2>
   <p class="final-sous">Développeur, informaticien de gestion ou technicien support. Disponible, en France et en Suisse.</p>
   <div class="final-liens">
-    <a class="final-lien" href="mailto:yanis.ms@icloud.com"><small>Écrire</small>yanis.ms@icloud.com</a>
-    <a class="final-lien" href="tel:+33652607305"><small>Appeler</small>+33 6 52 60 73 05</a>
-    <a class="final-lien" href="https://github.com/Shawliiath" target="_blank" rel="noopener"><small>Le code</small>github.com/Shawliiath</a>
+    <a class="final-lien" href="mailto:yanis.ms@icloud.com" aria-label="Écrire à yanis.ms@icloud.com">yanis.ms@icloud.com</a>
+    <a class="final-lien" href="tel:+33652607305" aria-label="Appeler le +33 6 52 60 73 05">+33 6 52 60 73 05</a>
+    <a class="final-lien" href="https://github.com/Shawliiath" target="_blank" rel="noopener" aria-label="Voir le code sur github.com/Shawliiath">github.com/Shawliiath</a>
   </div>
   <p class="signature">Yanis Moussi, 2026</p>
 </footer>
