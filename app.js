@@ -651,7 +651,8 @@
   // ---------------------------------------------------------------
   const sfCadre = $('#sf-cadre'), sfAccueil = $('#sf-accueil'), sfUrl = $('#sf-url'), sfProg = $('#sf-progres'), sfPrec = $('#sf-prec');
   // ces sites acceptent d'être affichés dans la tablette ; google aussi, grâce à igu=1. les autres partent dans un onglet
-  const ACCEPTENT = ['habbozino.com', 'wikipedia.org', 'shawliiath.github.io'];
+  // habbozino refuse d'être affiché ailleurs que chez lui (x-frame-options sameorigin) : il part dans un onglet
+  const ACCEPTENT = ['wikipedia.org', 'shawliiath.github.io'];
   const accepte = u => { const h = domaine(u); return ACCEPTENT.some(d => h === d || h.endsWith('.' + d)) || (h === 'google.com' && /[?&]igu=1/.test(u)); };
   const recherche = q => `https://www.google.com/search?igu=1&hl=fr&q=${encodeURIComponent(q)}`;
   const sfOnglet = $('#sf-onglet');
