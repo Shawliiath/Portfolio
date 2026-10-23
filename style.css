@@ -849,6 +849,14 @@ kbd{font:600 12px var(--sf);padding:1px 6px;border-radius:5px;border:1px solid #
   .et-curseur{width:84cqw}
   .et-texte{font-size:min(15px,5.4cqw);white-space:nowrap}
   .sf-accueil{padding:24px 16px 50px}
+  /* l'astuce « page blanche » : le texte et la croix en haut, le bouton sur toute la largeur dessous */
+  .sf-astuce{flex-wrap:wrap;left:10px;right:10px;bottom:7cqw;gap:10px 6px;padding:12px 8px 8px 14px;font-size:13.5px}
+  .sf-astuce span{flex:1 1 0;min-width:0}
+  .sf-astuce button:not(.sf-astuce-x){order:3;flex:1 1 100%;margin-right:6px;padding:10px 12px}
+  .sf-astuce .sf-astuce-x{align-self:flex-start;margin-top:-6px}
+  .sf-toast{max-width:calc(100% - 32px);white-space:normal;text-align:center}
+  .sf-adresse{padding:0 10px}
+  .sf-adresse input{font-size:14px}
   .sf-favoris{gap:14px}
 }
 /* le plus petit iphone : on allège les widgets et les listes */
