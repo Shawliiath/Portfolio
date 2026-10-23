@@ -868,8 +868,9 @@ kbd{font:600 12px var(--sf);padding:1px 6px;border-radius:5px;border:1px solid #
 @media (max-width: 600px){
   @container ecran (max-width: 260px){
     .w-agenda-ligne:nth-child(n+3){display:none}
-    .w-avatar{width:14cqw;font-size:5cqw}
-    .w-profil-txt > span:not(.w-dispo){display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+    /* sans l'avatar, les trois métiers tiennent en entier */
+    .w-profil{grid-template-columns:minmax(0,1fr)}
+    .w-profil .w-avatar{display:none}
     .liste > li{flex-direction:column;align-items:stretch;gap:2px}
     .liste > li > b{text-align:left}
     .sf-cadenas{display:none}
