@@ -34,6 +34,8 @@
     const tel = enIphone.matches, [de, vers] = tel ? [1, 2] : [2, 1];
     mots.forEach(m => $$(m[0]).forEach(el => { el.textContent = el.textContent.replace(m[de], m[vers]); }));
     etiquettes.forEach(s => $$(s).forEach(el => el.setAttribute('aria-label', el.getAttribute('aria-label').replace(tel ? 'la tablette' : 'le téléphone', tel ? 'le téléphone' : 'la tablette'))));
+    // la barre d'adresse de l'iphone est courte : le texte d'attente aussi
+    $('#sf-url').placeholder = tel ? 'Rechercher' : 'Rechercher sur Google ou saisir un site';
   };
   nommer(); enIphone.addEventListener('change', nommer);
 
