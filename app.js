@@ -760,6 +760,34 @@
   });
 
   // ---------------------------------------------------------------
+  // autour de l'appareil : la phrase qui s'allume, les captures qui s'ouvrent, l'appareil qui recule
+  // ---------------------------------------------------------------
+  const allumes = $$('.allume'), vitrines = $$('.vitrine img'), ipadEl = $('#ipad');
+  if (!doux) allumes.forEach(el => { el.innerHTML = el.textContent.trim().split(/\s+/).map(m => `<span>${m}</span>`).join(' '); el.classList.add('pret'); });
+  const borne = (v, a, b) => Math.max(a, Math.min(b, v));
+  let rafPage = 0;
+  const majPage = () => {
+    rafPage = 0;
+    const vh = innerHeight;
+    // mot à mot : la phrase est entièrement allumée quand elle arrive au tiers haut de l'écran
+    if (!doux) allumes.forEach(el => {
+      const r = el.getBoundingClientRect(), mots = el.children;
+      const p = borne((vh * .9 - r.top) / (r.height + vh * .45), 0, 1), n = Math.round(p * mots.length);
+      for (let i = 0; i < mots.length; i++) mots[i].classList.toggle('on', i < n);
+    });
+    vitrines.forEach(img => { const r = img.getBoundingClientRect(); img.style.setProperty('--p', borne((vh - r.top) / (vh * .75), 0, 1).toFixed(3)); });
+    // sur grand écran, l'appareil recule et s'assombrit un peu quand on le quitte
+    if (!doux && innerWidth > 600) {
+      const r = ipadEl.getBoundingClientRect(), q = borne(-r.top / (r.height * .9), 0, 1);
+      ipadEl.style.scale = (1 - q * .08).toFixed(4);
+      ipadEl.style.filter = q ? `brightness(${(1 - q * .45).toFixed(3)})` : '';
+    }
+  };
+  addEventListener('scroll', () => { rafPage ||= requestAnimationFrame(majPage); }, { passive: true });
+  addEventListener('resize', () => { rafPage ||= requestAnimationFrame(majPage); });
+  majPage();
+
+  // ---------------------------------------------------------------
   // autour de la tablette : le halo suit l'écran, les phrases montent quand on descend
   // ---------------------------------------------------------------
   new MutationObserver(() => $('#ipad').classList.toggle('eteinte', ecran.classList.contains('eteint'))).observe(ecran, { attributes: true, attributeFilter: ['class'] });

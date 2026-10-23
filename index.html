@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261023-fullstack">
+<link rel="stylesheet" href="style.css?v=20261023-page">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
@@ -19,7 +19,6 @@
 <main class="scene">
 
   <header class="pitch">
-    <p class="pitch-sur">Portfolio · 2026</p>
     <h1>Yanis Moussi.</h1>
     <p class="pitch-sous">Développeur fullstack, informaticien de gestion, technicien support. En France et en Suisse.</p>
   </header>
@@ -507,11 +506,14 @@
 <!-- la suite de la page : quelques phrases, comme sur une page produit -->
 <section class="recit" aria-label="En quelques mots">
   <div class="phrase">
-    <p class="ph-sur">Chez MEXI, deux ans d’alternance</p>
-    <h2>Deux applications.<br><span>Construites seul.</span><br>En service dans trois restaurants.</h2>
+    <p class="allume">Deux ans d’alternance chez MEXI. Deux applications construites seul, en service dans trois restaurants, et le support des équipes au quotidien.</p>
+    <figure class="vitrine">
+      <img src="img/mo-commande.webp" alt="My Orders, l’écran de commande : les produits avec leur photo et leur stock, le panier partagé à droite" width="1256" height="970" loading="lazy" decoding="async">
+      <figcaption><b>My Orders.</b> Le stock et les commandes fournisseurs, sur tablette. Une photo par produit, plus de 130 prises sur place.</figcaption>
+    </figure>
   </div>
   <div class="phrase phrase-etapes">
-    <p class="ph-sur">Du terrain à la production</p>
+    <h2>Du terrain <span class="gris">à la production.</span></h2>
     <ol class="etapes">
       <li><b>Observer</b>sept séances en salle, entre les services</li>
       <li><b>Cadrer</b>19 exigences, sur un recto</li>
@@ -522,13 +524,15 @@
     </ol>
   </div>
   <div class="phrase">
-    <p class="ph-sur">Et à côté</p>
-    <h2>Un jeu en ligne,<br><span>monté à deux.</span></h2>
+    <h2>Et à côté, <span>un jeu en ligne monté à deux.</span></h2>
     <p class="ph-texte">HabboZino : un serveur de jeu en Java, un client React et PixiJS, un site en Laravel, un serveur Linux à faire tenir. Des corrections jusque dans le bytecode.</p>
+    <figure class="vitrine">
+      <img src="img/hz-jeu.webp" alt="HabboZino en jeu : une salle en vue isométrique, des avatars et des objets rares" width="1600" height="842" loading="lazy" decoding="async">
+      <figcaption><b>HabboZino.</b> Le client dans le navigateur, relié au serveur de jeu en temps réel.</figcaption>
+    </figure>
   </div>
   <div class="phrase phrase-outils">
-    <p class="ph-sur">Ce que j’utilise</p>
-    <h2>La boîte à outils,<br><span>projet par projet.</span></h2>
+    <h2>La boîte à outils, <span class="gris">projet par projet.</span></h2>
     <dl class="specs">
       <div class="spec"><dt>Langages</dt><dd><ul><li><b>JavaScript</b><small>My Orders, la borne, cette tablette</small></li><li><b>TypeScript</b><small>le client du jeu</small></li><li><b>PHP</b><small>le site HabboZino</small></li><li><b>Java</b><small>les plugins du serveur de jeu</small></li><li><b>SQL</b><small>MySQL, les migrations</small></li><li><b>Python</b><small>scripts de build et de génération de PDF</small></li><li><b>Bash</b><small>déploiements, sauvegardes</small></li></ul></dd></div>
       <div class="spec"><dt>Front-end</dt><dd><ul><li><b>React</b><small>My Orders, la borne, le client du jeu</small></li><li><b>Material UI</b><small>My Orders</small></li><li><b>PixiJS</b><small>le rendu du jeu en isométrique</small></li><li><b>Livewire et Alpine.js</b><small>le site HabboZino</small></li><li><b>Tailwind CSS et Sass</b><small>les interfaces</small></li><li><b>Vite</b><small>les builds</small></li><li><b>PWA et Workbox</b><small>My Orders installable, hors ligne</small></li><li><b>Chart.js</b><small>les bilans de commandes</small></li></ul></dd></div>
@@ -554,6 +558,6 @@
   <p class="signature">Yanis Moussi, 2026</p>
 </footer>
 
-<script src="app.js?v=20261023-fullstack" defer></script>
+<script src="app.js?v=20261023-page" defer></script>
 </body>
 </html>
