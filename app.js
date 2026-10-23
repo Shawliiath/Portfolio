@@ -4,6 +4,16 @@
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const ecran = $('#ecran'), verrou = $('#verrou'), piste = $('#piste'), pages = $('#pages');
   const doux = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // fermer en douceur : le panneau s'efface avant de disparaître, comme sur la vraie
+  const minuteurs = new Map();
+  const ferme = el => el.hidden || el.classList.contains('sort');
+  function cacherDoux(el, ms = 300) {
+    if (ferme(el)) return;
+    if (doux) { el.hidden = true; return; }
+    el.classList.add('sort');
+    minuteurs.set(el, setTimeout(() => { el.hidden = true; el.classList.remove('sort'); }, ms));
+  }
+  function montrerDoux(el) { clearTimeout(minuteurs.get(el)); el.classList.remove('sort'); el.hidden = false; }
 
   // l'heure, en haut et sur l'écran verrouillé
   const jours = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
@@ -329,8 +339,10 @@
   // le centre de contrôle : on le tire depuis le coin en haut à droite
   // ---------------------------------------------------------------
   const cc = $('#cc'), zone = $('#zone-cc');
-  const ouvrirCC = () => { if (!cc.hidden) return; cc.hidden = false; zone.setAttribute('aria-expanded', 'true'); $('#cc-sombre').focus({ preventScroll: true }); mesurerPage(); };
-  const fermerCC = () => { if (cc.hidden) return; cc.hidden = true; zone.setAttribute('aria-expanded', 'false'); zone.focus({ preventScroll: true }); };
+  const ouvrirCC = () => { if (!ferme(cc)) return; montrerDoux(cc); zone.setAttribute('aria-expanded', 'true'); $('#cc-sombre').focus({ preventScroll: true }); mesurerPage(); };
+  const fermerCC = () => { if (ferme(cc)) return; cacherDoux(cc); zone.setAttribute('aria-expanded', 'false'); zone.focus({ preventScroll: true }); };
+  // un clic n'importe où hors de l'écran referme aussi le centre de contrôle
+  document.addEventListener('pointerdown', e => { if (!ferme(cc) && !e.target.closest('#ecran')) fermerCC(); }, true);
   let yCC = null;
   zone.addEventListener('pointerdown', e => { yCC = e.clientY; zone.setPointerCapture(e.pointerId); });
   zone.addEventListener('pointermove', e => { if (yCC !== null && e.clientY - yCC > 24) { yCC = null; ouvrirCC(); } });
@@ -423,8 +435,8 @@
     q.setAttribute('aria-activedescendant', `r-${i}`);
     $(`#r-${i}`)?.scrollIntoView({ block: 'nearest' });
   };
-  const ouvrirSpot = () => { if (ecran.classList.contains('verrouille')) deverrouiller(); fermerCC(); spot.hidden = false; q.value = ''; resultats.innerHTML = ''; setTimeout(() => q.focus(), 30); };
-  const fermerSpot = () => { spot.hidden = true; };
+  const ouvrirSpot = () => { if (ecran.classList.contains('verrouille')) deverrouiller(); fermerCC(); montrerDoux(spot); q.value = ''; resultats.innerHTML = ''; setTimeout(() => q.focus(), 30); };
+  const fermerSpot = () => cacherDoux(spot, 240);
   $('#spot-annuler').addEventListener('click', fermerSpot);
   function aller(it) {
     fermerSpot();
@@ -449,8 +461,8 @@
   spot.addEventListener('click', e => { if (e.target === spot) fermerSpot(); });
   $('#bouton-chercher').addEventListener('click', ouvrirSpot);
   addEventListener('keydown', e => {
-    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); spot.hidden ? ouvrirSpot() : fermerSpot(); }
-    if (e.key === 'Escape') { if (!spot.hidden) { e.stopImmediatePropagation(); fermerSpot(); } else if (!cc.hidden) { e.stopImmediatePropagation(); fermerCC(); } else if (ecran.classList.contains('edition')) finEdition(); }
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); ferme(spot) ? ouvrirSpot() : fermerSpot(); }
+    if (e.key === 'Escape') { if (!ferme(spot)) { e.stopImmediatePropagation(); fermerSpot(); } else if (!ferme(cc)) { e.stopImmediatePropagation(); fermerCC(); } else if (ecran.classList.contains('edition')) finEdition(); }
   }, true);
   // glisser vers le bas sur l'accueil ouvre aussi la recherche, comme sur la vraie
   let ySpot = null;
