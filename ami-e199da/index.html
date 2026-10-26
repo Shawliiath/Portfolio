@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yanis · développeur fullstack, informaticien de gestion, technicien support</title>
+<meta name="description" content="Yanis, diplômé du Master développement (ISITECH Lyon, 2026). Développeur fullstack, informaticien de gestion ou technicien support, en France et en Suisse.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#000000">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=20261023-zino-onglet">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<a class="saut" href="#ecran">Aller à la tablette</a>
+
+<!-- portfolio de yanis : une tablette qu'on prend en main, chaque projet est une appli · by yanis -->
+<main class="scene">
+
+  <header class="pitch">
+    <h1>Yanis.</h1>
+    <p class="pitch-sous">Développeur fullstack, informaticien de gestion, technicien support. En France et en Suisse.</p>
+  </header>
+
+  <div class="ipad" id="ipad">
+    <div class="aura" aria-hidden="true"></div>
+    <button type="button" class="ipad-bouton ipad-bouton-haut" id="bouton-veille" aria-label="Verrouiller ou allumer la tablette"></button>
+    <button type="button" class="ipad-bouton ipad-bouton-vol" id="bouton-volp" aria-label="Monter le volume"></button>
+    <button type="button" class="ipad-bouton ipad-bouton-vol2" id="bouton-volm" aria-label="Baisser le volume"></button>
+    <div class="ipad-cadre">
+      <span class="ipad-camera" aria-hidden="true"></span>
+      <div class="ecran" id="ecran" tabindex="-1">
+        <span class="ilot" aria-hidden="true"></span>
+        <div class="fond-ecran" aria-hidden="true"></div>
+
+        <div class="barre-etat" aria-hidden="true">
+          <span><b id="be-heure">9:41</b><span id="be-date">jeu. 22 oct.</span></span>
+          <span class="be-droite">
+            <svg viewBox="0 0 18 12" class="be-signal"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
+            <svg viewBox="0 0 20 14" id="be-wifi"><path d="M10 13.2 7.6 10.4a3.4 3.4 0 0 1 4.8 0zM4.9 7.9a7.3 7.3 0 0 1 10.2 0l-1.6 1.7a5 5 0 0 0-7 0zM2.2 5.2a11.2 11.2 0 0 1 15.6 0l-1.6 1.7a8.8 8.8 0 0 0-12.4 0z"/></svg>
+            <span id="be-batt">100 %</span>
+            <i class="batterie" id="be-batterie"><i></i></i>
+          </span>
+        </div>
+
+        <button type="button" class="zone-cc" id="zone-cc" aria-label="Ouvrir le centre de contrôle" aria-controls="cc" aria-expanded="false"></button>
+        <div class="voile-lum" id="voile-lum" aria-hidden="true"></div>
+        <!-- l'appui long sur le bouton du haut : glisser pour éteindre -->
+        <div class="eteindre" id="eteindre" role="dialog" aria-label="Éteindre la tablette" hidden>
+          <div class="et-curseur" id="et-curseur">
+            <button type="button" class="et-poignee" id="et-poignee" aria-label="Éteindre la tablette"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5v8M7 6.2a7.5 7.5 0 1 0 10 0" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+            <span class="et-texte">glisser pour éteindre</span>
+          </div>
+          <button type="button" class="et-annuler" id="et-annuler"><span aria-hidden="true">×</span>Annuler</button>
+        </div>
+        <div class="demarrage" id="demarrage" aria-hidden="true" hidden><span>YM</span><i class="dm-barre"><i></i></i></div>
+        <div class="hud-volume" id="hud-volume" aria-live="polite" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/><path id="hv-ondes" d="M15 9a4 4 0 0 1 0 6M17.5 6.5a7.5 7.5 0 0 1 0 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="hv-barre"><i id="hv-niveau"></i></span><span class="vh" id="hv-texte"></span></div>
+
+        <!-- l'écran verrouillé : l'heure, et une notification de yanis -->
+        <section class="verrou" id="verrou" aria-label="Écran verrouillé">
+          <svg class="v-cadenas" viewBox="0 0 24 24" aria-hidden="true"><path class="vc-anse" d="M8 11.5V8.5a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2.2"/><rect x="5.5" y="11" width="13" height="9.5" rx="2.4" fill="currentColor"/></svg>
+          <p class="v-date" id="v-date">jeudi 22 octobre</p>
+          <p class="v-heure" id="v-heure">9:41</p>
+          <button type="button" class="notif" id="notif">
+            <span class="notif-ico app-ico ico-messages" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4C7 4 3 7.3 3 11.4c0 2.3 1.3 4.4 3.3 5.8L5.7 20l3.6-1.9c.9.2 1.8.3 2.7.3 5 0 9-3.3 9-7.4S17 4 12 4z"/></svg></span>
+            <span class="notif-txt">
+              <span class="notif-tete"><b>Messages</b><span>maintenant</span></span>
+              <b class="notif-qui">Yanis</b>
+              <span class="notif-msg">Bonjour ! Je cherche un poste de développeur fullstack, d’informaticien de gestion ou de technicien support, en France et en Suisse. Touchez pour ouvrir ma tablette.</span>
+            </span>
+          </button>
+          <p class="v-aide" aria-hidden="true">Glissez vers le haut pour ouvrir</p>
+          <!-- sur l'iphone : la lampe et l'appareil photo, en bas de l'écran verrouillé -->
+          <button type="button" class="v-rapide v-lampe" id="v-lampe" aria-pressed="false" aria-label="Lampe torche"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 2.5h11v2.6l-2.6 4v11.4a1.2 1.2 0 0 1-1.2 1.2h-3.4a1.2 1.2 0 0 1-1.2-1.2V9.1l-2.6-4z" fill="currentColor"/><path d="M12 12v3.4" stroke="#8e8e93" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+          <button type="button" class="v-rapide v-photo" id="v-photo" aria-label="Ouvrir l’appareil photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.2 6.2 9.4 4.5h5.2l1.2 1.7H19a2 2 0 0 1 2 2v9.3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8.2a2 2 0 0 1 2-2z" fill="currentColor"/><circle cx="12" cy="12.8" r="3.6" fill="none" stroke="#3a3a3c" stroke-width="1.6"/></svg></button>
+          <button type="button" class="barre-accueil v-barre" id="deverrouiller"><span class="vh">Ouvrir la tablette</span></button>
+        </section>
+
+        <!-- l'écran d'accueil : deux pages qu'on fait glisser, et le dock -->
+        <section class="accueil" id="accueil" aria-label="Écran d’accueil">
+          <div class="pages" id="pages">
+            <div class="piste" id="piste">
+
+              <div class="page" aria-label="Page 1 sur 2">
+                <button type="button" class="widget w-profil" data-ouvre="apropos">
+                  <span class="w-avatar" aria-hidden="true">YM</span>
+                  <span class="w-profil-txt">
+                    <b>Yanis</b>
+                    <span>Développeur fullstack, informaticien de gestion, technicien support</span>
+                    <span class="w-dispo">Disponible · Lyon, France et Suisse</span>
+                  </span>
+                  <span class="w-profil-phrase">Deux ans d’alternance chez MEXI : deux applications construites seul, en service dans trois restaurants, et le support des équipes.</span>
+                  <span class="w-profil-bas">
+                    <span><small>Diplôme</small>Master dev 2026</span>
+                    <span><small>Alternance</small>2 ans chez MEXI</span>
+                    <span><small>Langues</small>Français, anglais</span>
+                  </span>
+                </button>
+                <button type="button" class="widget w-agenda" data-ouvre="parcours">
+                  <span class="w-agenda-tete">Parcours</span>
+                  <span class="w-agenda-ligne"><i style="--c:#e9e3d6"></i><span><b>22 sept. 2026</b>Master dev, diplômé</span></span>
+                  <span class="w-agenda-ligne"><i style="--c:#ff8a5c"></i><span><b>24 juil. 2026</b>Passation de 22 pages</span></span>
+                  <span class="w-agenda-ligne"><i style="--c:#5cc8f0"></i><span><b>avril 2026</b>Borne et cuisine en service</span></span>
+                  <span class="w-agenda-ligne"><i style="--c:#ffc229"></i><span><b>mai 2025</b>My Orders dans trois restaurants</span></span>
+                </button>
+
+                <button type="button" class="app" data-ouvre="orders"><span class="app-ico ico-orders" aria-hidden="true"><svg viewBox="-48.5 -51.5 221 221" class="logo-mo"><g fill="currentColor"><rect x="0" y="0" width="14" height="118"/><polygon points="0,0 16,0 62,69 54,81"/><polygon points="108,0 124,0 45.3,118 29.3,118"/><polygon points="53.3,118 124,12 124,118 108,118 108,57 67.3,118"/></g></svg></span><span class="app-nom">My Orders</span></button>
+                <button type="button" class="app" data-ouvre="borne"><span class="app-ico ico-borne" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="6.6" y="2.4" width="10.8" height="15.4" rx="1.8" fill="#fff"/><rect x="8" y="3.9" width="8" height="9" rx=".9" fill="#0d6db0"/><rect x="9.1" y="5.1" width="5.8" height="1.4" rx=".5" fill="#7fdcff"/><rect x="9.1" y="7.5" width="4" height="1.4" rx=".5" fill="#7fdcff"/><rect x="9.1" y="9.9" width="4.8" height="1.4" rx=".5" fill="#7fdcff"/><rect x="9.8" y="14.4" width="4.4" height="1.1" rx=".55" fill="#0d6db0"/><rect x="10.7" y="17.6" width="2.6" height="2.8" fill="#fff"/><rect x="7.6" y="20.2" width="8.8" height="1.6" rx=".8" fill="#fff"/></svg></span><span class="app-nom">Borne et cuisine</span></button>
+                <button type="button" class="app" data-ouvre="support"><span class="app-ico ico-support" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="6.6" fill="none" stroke="#fff" stroke-width="4.4"/><circle cx="12" cy="12" r="6.6" fill="none" stroke="#d2381b" stroke-width="4.4" stroke-dasharray="4.35 6.01" stroke-dashoffset="2.18" transform="rotate(45 12 12)"/><circle cx="12" cy="12" r="8.8" fill="none" stroke="rgba(120,30,10,.25)" stroke-width=".5"/></svg></span><span class="app-nom">Support</span></button>
+                <button type="button" class="app" data-ouvre="zino"><span class="app-ico ico-zino" aria-hidden="true"><img src="img/hz-trefle.png" alt="" draggable="false" width="116" height="132"></span><span class="app-nom">HabboZino</span></button>
+                <button type="button" class="app" data-ouvre="photos"><span class="app-ico ico-photos" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="9.15" y="1.6" width="5.7" height="10.4" rx="2.85" fill="#ff9f0a" transform="rotate(0 12 12) translate(1.25 0)"/><rect x="9.15" y="1.6" width="5.7" height="10.4" rx="2.85" fill="#ffd60a" transform="rotate(45 12 12) translate(1.25 0)"/><rect x="9.15" y="1.6" width="5.7" height="10.4" rx="2.85" fill="#9ed93b" transform="rotate(90 12 12) translate(1.25 0)"/><rect x="9.15" y="1.6" width="5.7" height="10.4" rx="2.85" fill="#34c759" transform="rotate(135 12 12) translate(1.25 0)"/><rect x="9.15" y="1.6" width="5.7" height="10.4" rx="2.85" fill="#40c8e0" transform="rotate(180 12 12) translate(1.25 0)"/><rect x="9.15" y="1.6" width="5.7" height="10.4" rx="2.85" fill="#2f7cf6" transform="rotate(225 12 12) translate(1.25 0)"/><rect x="9.15" y="1.6" width="5.7" height="10.4" rx="2.85" fill="#8e5ae0" transform="rotate(270 12 12) translate(1.25 0)"/><rect x="9.15" y="1.6" width="5.7" height="10.4" rx="2.85" fill="#ff375f" transform="rotate(315 12 12) translate(1.25 0)"/></svg></span><span class="app-nom">Photos</span></button>
+                <button type="button" class="app" data-ouvre="apropos"><span class="app-ico ico-reglages" aria-hidden="true"><svg viewBox="0 0 24 24"><polygon points="20.85,11.07 22.28,11.39 22.28,12.61 20.85,12.93 20.64,14.15 21.87,14.94 21.45,16.09 20.00,15.90 19.38,16.98 20.27,18.14 19.48,19.08 18.18,18.40 17.23,19.20 17.67,20.60 16.61,21.21 15.62,20.13 14.45,20.56 14.39,22.02 13.18,22.23 12.62,20.88 11.38,20.88 10.82,22.23 9.61,22.02 9.55,20.56 8.38,20.13 7.39,21.21 6.33,20.60 6.77,19.20 5.82,18.40 4.52,19.08 3.73,18.14 4.62,16.98 4.00,15.90 2.55,16.09 2.13,14.94 3.36,14.15 3.15,12.93 1.72,12.61 1.72,11.39 3.15,11.07 3.36,9.85 2.13,9.06 2.55,7.91 4.00,8.10 4.62,7.02 3.73,5.86 4.52,4.92 5.82,5.60 6.77,4.80 6.33,3.40 7.39,2.79 8.38,3.87 9.55,3.44 9.61,1.98 10.82,1.77 11.38,3.12 12.62,3.12 13.18,1.77 14.39,1.98 14.45,3.44 15.62,3.87 16.61,2.79 17.67,3.40 17.23,4.80 18.18,5.60 19.48,4.92 20.27,5.86 19.38,7.02 20.00,8.10 21.45,7.91 21.87,9.06 20.64,9.85" fill="#3a3a3e"/><circle cx="12" cy="12" r="7.2" fill="#8e9097"/><circle cx="12" cy="12" r="6.1" fill="#e4e4e8"/><g stroke="#4a4a4e" stroke-width="1.1" stroke-linecap="round"><path d="M13.82 13.05L16.85 14.80"/><path d="M12.00 14.10L12.00 17.60"/><path d="M10.18 13.05L7.15 14.80"/><path d="M10.18 10.95L7.15 9.20"/><path d="M12.00 9.90L12.00 6.40"/><path d="M13.82 10.95L16.85 9.20"/></g><circle cx="12" cy="12" r="2.2" fill="#4a4a4e"/></svg></span><span class="app-nom">À propos</span></button>
+              </div>
+
+              <div class="page" aria-label="Page 2 sur 2">
+                <button type="button" class="widget w-photo" data-ouvre="zino" style="--img:url('img/hz-jeu.webp')">
+                  <span class="w-photo-legende"><b>HabboZino</b>Un jeu social en ligne, monté à deux</span>
+                </button>
+                <button type="button" class="widget w-note" data-ouvre="messages">
+                  <span class="w-note-tete">Notes</span>
+                  <b>Ce que je cherche</b>
+                  <span>Un poste de développeur fullstack, d’informaticien de gestion ou de technicien support. En France et en Suisse. Du moment qu’il y a des gens à aider et des choses à faire marcher.</span>
+                </button>
+                <button type="button" class="widget w-photo w-photo-petit" data-ouvre="orders" style="--img:url('img/mo-commande.webp')">
+                  <span class="w-photo-legende"><b>My Orders</b>Mars 2025, en service</span>
+                </button>
+                <div class="widget w-astuces" role="note">
+                  <span class="w-note-tete">Astuces</span>
+                  <span><b>Coin en haut à droite</b> : glissez vers le bas pour le centre de contrôle</span>
+                  <span><b>⌘ K</b> ou Rechercher : tout chercher dans la tablette</span>
+                  <span><b>Appui long</b> sur une icône : la déplacer</span>
+                </div>
+                <a class="app" draggable="false" href="https://github.com/Shawliiath" target="_blank" rel="noopener"><span class="app-ico ico-code" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></span><span class="app-nom">GitHub</span></a>
+                <a class="app" draggable="false" href="tel:+33652607305"><span class="app-ico ico-tel" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="#fff" d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg></span><span class="app-nom">Téléphone</span></a>
+                <a class="app" draggable="false" href="mailto:yanis.ms@icloud.com"><span class="app-ico ico-mail" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2.5" y="5.5" width="19" height="13.5" rx="2.2" fill="#fff"/><path d="M3 6.8 12 13l9-6.2" fill="none" stroke="#2c84f0" stroke-width="1.3" stroke-linejoin="round"/><path d="M3 18.2l6.6-5.4M21 18.2l-6.6-5.4" fill="none" stroke="#a9cdfb" stroke-width="1"/></svg></span><span class="app-nom">Mail</span></a>
+              </div>
+
+            </div>
+          </div>
+          <button type="button" class="fin-edition" id="fin-edition" hidden>OK</button>
+          <div class="points" id="points" role="tablist" aria-label="Pages de l’écran d’accueil">
+            <button type="button" role="tab" aria-selected="true" aria-label="Page 1"></button>
+            <button type="button" role="tab" aria-selected="false" aria-label="Page 2"></button>
+          </div>
+          <button type="button" class="bouton-chercher" id="bouton-chercher"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="m15 15 5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>Rechercher</button>
+          <nav class="dock" aria-label="Dock">
+            <button type="button" class="app" data-ouvre="messages"><span class="app-ico ico-messages" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4C7 4 3 7.3 3 11.4c0 2.3 1.3 4.4 3.3 5.8L5.7 20l3.6-1.9c.9.2 1.8.3 2.7.3 5 0 9-3.3 9-7.4S17 4 12 4z" fill="currentColor"/></svg></span><span class="app-nom">Messages</span></button>
+            <button type="button" class="app" data-ouvre="safari"><span class="app-ico ico-safari" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.3" fill="#fff"/><circle cx="12" cy="12" r="8.3" fill="url(#sf-degrade)"/><g stroke="#fff" stroke-width=".55" stroke-linecap="round" opacity=".9"><path d="M12 4.3v1.4" transform="rotate(0 12 12)"/><path d="M12 4.3v0.8" transform="rotate(15 12 12)"/><path d="M12 4.3v0.8" transform="rotate(30 12 12)"/><path d="M12 4.3v1.4" transform="rotate(45 12 12)"/><path d="M12 4.3v0.8" transform="rotate(60 12 12)"/><path d="M12 4.3v0.8" transform="rotate(75 12 12)"/><path d="M12 4.3v1.4" transform="rotate(90 12 12)"/><path d="M12 4.3v0.8" transform="rotate(105 12 12)"/><path d="M12 4.3v0.8" transform="rotate(120 12 12)"/><path d="M12 4.3v1.4" transform="rotate(135 12 12)"/><path d="M12 4.3v0.8" transform="rotate(150 12 12)"/><path d="M12 4.3v0.8" transform="rotate(165 12 12)"/><path d="M12 4.3v1.4" transform="rotate(180 12 12)"/><path d="M12 4.3v0.8" transform="rotate(195 12 12)"/><path d="M12 4.3v0.8" transform="rotate(210 12 12)"/><path d="M12 4.3v1.4" transform="rotate(225 12 12)"/><path d="M12 4.3v0.8" transform="rotate(240 12 12)"/><path d="M12 4.3v0.8" transform="rotate(255 12 12)"/><path d="M12 4.3v1.4" transform="rotate(270 12 12)"/><path d="M12 4.3v0.8" transform="rotate(285 12 12)"/><path d="M12 4.3v0.8" transform="rotate(300 12 12)"/><path d="M12 4.3v1.4" transform="rotate(315 12 12)"/><path d="M12 4.3v0.8" transform="rotate(330 12 12)"/><path d="M12 4.3v0.8" transform="rotate(345 12 12)"/></g><path d="M16.95 7.05 13.13 13.13 10.87 10.87z" fill="#ff3b30"/><path d="M7.05 16.95 10.87 10.87 13.13 13.13z" fill="#fff"/><circle cx="12" cy="12" r=".55" fill="#d8d8dc"/><defs><linearGradient id="sf-degrade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#20c5ff"/><stop offset="1" stop-color="#1572f0"/></linearGradient></defs></svg></span><span class="app-nom">Safari</span></button>
+            <button type="button" class="app" data-ouvre="parcours"><span class="app-ico ico-agenda" aria-hidden="true"><span class="ag-jour" id="ag-jour">jeu.</span><span class="ag-num" id="ag-num">22</span></span><span class="app-nom">Parcours</span></button>
+            <button type="button" class="app" data-ouvre="orders"><span class="app-ico ico-orders" aria-hidden="true"><svg viewBox="-48.5 -51.5 221 221" class="logo-mo"><g fill="currentColor"><rect x="0" y="0" width="14" height="118"/><polygon points="0,0 16,0 62,69 54,81"/><polygon points="108,0 124,0 45.3,118 29.3,118"/><polygon points="53.3,118 124,12 124,118 108,118 108,57 67.3,118"/></g></svg></span><span class="app-nom">My Orders</span></button>
+            <button type="button" class="app" data-ouvre="photos"><span class="app-ico ico-photos" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="9.15" y="1.6" width="5.7" height="10.4" rx="2.85" fill="#ff9f0a" transform="rotate(0 12 12) translate(1.25 0)"/><rect x="9.15" y="1.6" width="5.7" height="10.4" rx="2.85" fill="#ffd60a" transform="rotate(45 12 12) translate(1.25 0)"/><rect x="9.15" y="1.6" width="5.7" height="10.4" rx="2.85" fill="#9ed93b" transform="rotate(90 12 12) translate(1.25 0)"/><rect x="9.15" y="1.6" width="5.7" height="10.4" rx="2.85" fill="#34c759" transform="rotate(135 12 12) translate(1.25 0)"/><rect x="9.15" y="1.6" width="5.7" height="10.4" rx="2.85" fill="#40c8e0" transform="rotate(180 12 12) translate(1.25 0)"/><rect x="9.15" y="1.6" width="5.7" height="10.4" rx="2.85" fill="#2f7cf6" transform="rotate(225 12 12) translate(1.25 0)"/><rect x="9.15" y="1.6" width="5.7" height="10.4" rx="2.85" fill="#8e5ae0" transform="rotate(270 12 12) translate(1.25 0)"/><rect x="9.15" y="1.6" width="5.7" height="10.4" rx="2.85" fill="#ff375f" transform="rotate(315 12 12) translate(1.25 0)"/></svg></span><span class="app-nom">Photos</span></button>
+            <button type="button" class="app" data-ouvre="camera"><span class="app-ico ico-camera" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8.2 6.2 9.4 4.5h5.2l1.2 1.7H19a2 2 0 0 1 2 2v9.3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8.2a2 2 0 0 1 2-2z" fill="#1d1d1f"/><circle cx="12" cy="12.8" r="4.3" fill="#3a3a3c"/><circle cx="12" cy="12.8" r="3.1" fill="#0b0b0c"/><circle cx="10.9" cy="11.7" r=".9" fill="#5b6f9a"/><circle cx="17.6" cy="9" r=".8" fill="#ffd60a"/></svg></span><span class="app-nom">Appareil photo</span></button>
+          </nav>
+        </section>
+
+        <!-- le centre de contrôle -->
+        <section class="cc" id="cc" aria-label="Centre de contrôle" hidden>
+          <div class="cc-grille">
+            <button type="button" class="cc-tuile" id="cc-sombre" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="currentColor"/></svg><span>Mode sombre</span></button>
+            <button type="button" class="cc-tuile" id="cc-rotation" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 9a9 9 0 0 1 4-5M21 15a9 9 0 0 1-4 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>Rotation</span></button>
+            <button type="button" class="cc-tuile" id="cc-plein" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Plein écran</span></button>
+            <button type="button" class="cc-tuile" id="cc-verrou"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2" fill="currentColor"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5" fill="none" stroke="currentColor" stroke-width="2.2"/></svg><span>Verrouiller</span></button>
+            <div class="cc-tuile cc-info"><b id="cc-reseau">En ligne</b><span id="cc-batt">Batterie</span></div>
+            <label class="cc-curseur"><span>Luminosité</span><input type="range" id="cc-lum" min="35" max="100" value="100"></label>
+            <div class="cc-tuile cc-page"><b>Cette page</b><span id="cc-mesure">Mesure du chargement…</span></div>
+          </div>
+        </section>
+
+        <!-- la recherche : tout le contenu de la tablette -->
+        <section class="spot" id="spot" role="dialog" aria-modal="true" aria-label="Rechercher" hidden>
+          <div class="spot-boite">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="m15 15 5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+            <input id="spot-q" type="search" placeholder="Rechercher : react, linux, support…" autocomplete="off" spellcheck="false" aria-controls="spot-res" aria-autocomplete="list">
+            <button type="button" class="spot-annuler" id="spot-annuler">Annuler</button>
+          </div>
+          <ol class="spot-res" id="spot-res" role="listbox" aria-label="Résultats"></ol>
+        </section>
+
+        <!-- ============================ les applis ============================ -->
+
+        <section class="appli appli-safari" id="app-safari" data-appli="safari" role="dialog" aria-modal="true" aria-labelledby="t-safari" hidden>
+          <div class="sf-barre">
+            <button type="button" class="a-retour" data-ferme>Accueil</button>
+            <button type="button" class="sf-bouton" id="sf-prec" aria-label="Page précédente" disabled><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <form class="sf-adresse" id="sf-form" role="search">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="sf-cadenas"><rect x="6" y="10.5" width="12" height="9" rx="2" fill="currentColor"/><path d="M8.8 10.5V8.2a3.2 3.2 0 0 1 6.4 0v2.3" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+              <label class="vh" for="sf-url">Adresse du site</label>
+              <input id="sf-url" type="text" inputmode="url" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Rechercher sur Google ou saisir un site">
+            </form>
+            <button type="button" class="sf-bouton" id="sf-onglet" aria-label="Ouvrir dans un nouvel onglet" disabled><svg viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v4.5A1.5 1.5 0 0 1 16.5 20h-11A1.5 1.5 0 0 1 4 18.5v-11A1.5 1.5 0 0 1 5.5 6H10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <button type="button" class="sf-bouton" id="sf-recharger" aria-label="Recharger la page"><svg viewBox="0 0 24 24"><path d="M19 12a7 7 0 1 1-2.05-4.95M19 4.5V8h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <span class="sf-progres" id="sf-progres" aria-hidden="true"></span>
+          </div>
+          <div class="sf-corps">
+            <div class="sf-accueil" id="sf-accueil">
+              <h2 class="sf-titre" id="t-safari">Favoris</h2>
+              <div class="sf-favoris">
+                <button type="button" class="sf-fav" data-url="https://habbozino.com/values"><span class="sf-fav-ico sf-zino"><img src="img/hz-trefle.png" alt="" width="116" height="132" draggable="false"></span><span>HabboZino</span></button>
+                <a class="sf-fav" href="https://github.com/Shawliiath" target="_blank" rel="noopener"><span class="sf-fav-ico sf-gh"><svg viewBox="0 0 24 24"><path fill="#fff" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></span><span>GitHub</span></a>
+              </div>
+              <p class="groupe-titre">Ce que vous ouvrez ici</p>
+              <ul class="liste liste-titres">
+                <li><b>HabboZino</b><span>Le jeu social que j’ai monté à deux. Il s’ouvre dans un nouvel onglet, sur le vrai site.</span></li>
+                <li><b>GitHub</b><span>Il refuse de s’afficher dans une autre page, il s’ouvre donc dans un nouvel onglet.</span></li>
+                <li><b>Et le reste du web</b><span>Tapez une recherche en haut, Google répond ici même. Certains sites (YouTube, GitHub…) interdisent d’être affichés dans une autre page : ils s’ouvrent dans un nouvel onglet.</span></li>
+              </ul>
+            </div>
+            <iframe class="sf-cadre" id="sf-cadre" title="Page web" hidden referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+          </div>
+          <button type="button" class="barre-accueil a-barre" data-ferme><span class="vh">Revenir à l’accueil</span></button>
+        </section>
+
+        <section class="appli appli-camera" id="app-camera" data-appli="camera" role="dialog" aria-modal="true" aria-label="Appareil photo" hidden>
+          <video class="cam-video" id="cam-video" playsinline muted autoplay></video>
+          <div class="cam-flash" id="cam-flash" aria-hidden="true"></div>
+          <p class="cam-message" id="cam-message" hidden></p>
+          <div class="cam-haut"><button type="button" class="a-retour" data-ferme>Accueil</button><span class="cam-mode">Photo</span></div>
+          <div class="cam-commandes">
+            <button type="button" class="cam-vignette" id="cam-vignette" aria-label="Voir les photos" disabled><img id="cam-derniere" alt="" hidden></button>
+            <button type="button" class="cam-declencheur" id="cam-declencheur" aria-label="Prendre une photo"></button>
+            <button type="button" class="cam-retourner" id="cam-retourner" aria-label="Changer de caméra"><svg viewBox="0 0 24 24"><path d="M4 9.5a8 8 0 0 1 14.2-3.2M20 14.5a8 8 0 0 1-14.2 3.2M18.6 3v3.6H15M5.4 21v-3.6H9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+          <p class="vh" id="cam-annonce" aria-live="polite"></p>
+          <button type="button" class="barre-accueil a-barre" data-ferme><span class="vh">Revenir à l’accueil</span></button>
+        </section>
+
+        <section class="appli" id="app-orders" data-appli="orders" role="dialog" aria-modal="true" aria-labelledby="t-orders" hidden>
+          <header class="a-haut"><button type="button" class="a-retour" data-ferme>Accueil</button><span class="a-petit-titre" aria-hidden="true">My Orders</span></header>
+          <div class="a-defile">
+            <p class="a-sur">Alternance chez MEXI · oct. 2024 à juin 2025</p>
+            <h2 class="a-titre" id="t-orders">My Orders</h2>
+            <p class="a-chapeau">Le stock et les commandes fournisseurs, sur tablette, dans les trois restaurants de la chaîne MEXI KEBAB. Seul, de l’observation à la mise en production.</p>
+
+            <div class="carrousel" data-carrousel>
+              <div class="c-piste">
+                <figure><img src="img/mo-connexion.webp" alt="Écran de connexion de My Orders, avec un pavé numérique tactile" width="1680" height="970" loading="lazy" decoding="async"><figcaption>La connexion, sur un pavé numérique fait pour le tactile.</figcaption></figure>
+                <figure><img src="img/mo-commande.webp" alt="Écran de commande de My Orders : les produits avec leur photo et leur stock, le panier partagé à droite" width="1256" height="970" loading="lazy" decoding="async"><figcaption>L’écran de commande. Une photo par produit, j’en ai pris plus de 130. Le panier est le même sur toutes les tablettes.</figcaption></figure>
+                <figure><img src="img/mo-panier.webp" alt="Détail de la commande avant validation, avec les quantités et les boutons Vider et Valider" width="1680" height="972" loading="lazy" decoding="async"><figcaption>Le détail avant validation : on vérifie, on ajuste, on valide. Montants floutés.</figcaption></figure>
+                <figure><img src="img/mo-stock.webp" alt="Stock détaillé de My Orders, avec filtres par catégorie et par niveau de stock" width="1241" height="971" loading="lazy" decoding="async"><figcaption>Le stock détaillé, filtrable par catégorie et par niveau.</figcaption></figure>
+                <figure><img src="img/mo-journal.webp" alt="Journal des actions de My Orders : chaque ajout et chaque suppression, avec la date et l’heure" width="1241" height="972" loading="lazy" decoding="async"><figcaption>Le journal. Chaque geste est daté par le serveur : la preuve qui manquait au carnet papier.</figcaption></figure>
+                <figure><img src="img/mo-bilan.webp" alt="Bilan des commandes de My Orders, avec un tableau et des graphiques" width="1249" height="970" loading="lazy" decoding="async"><figcaption>Le bilan des commandes et ses graphiques, faits avec Chart.js. Montants floutés.</figcaption></figure>
+                <figure><img src="img/mo-admin.webp" alt="Gestion des catégories et des articles dans My Orders" width="1249" height="972" loading="lazy" decoding="async"><figcaption>La gestion des catégories et des articles. Prix floutés.</figcaption></figure>
+              </div>
+              <div class="c-points" aria-hidden="true"></div>
+              <button type="button" class="c-fleche c-prec" aria-label="Capture précédente"></button><button type="button" class="c-fleche c-suiv" aria-label="Capture suivante"></button>
+            </div>
+
+            <div class="segments" role="tablist" aria-label="My Orders">
+              <button type="button" role="tab" aria-selected="true" aria-controls="mo-avant" id="seg-mo-avant">Avant</button>
+              <button type="button" role="tab" aria-selected="false" aria-controls="mo-fait" id="seg-mo-fait">Ce que j’ai fait</button>
+              <button type="button" role="tab" aria-selected="false" aria-controls="mo-resultat" id="seg-mo-resultat">Résultat</button>
+            </div>
+            <div class="seg-panneau" id="mo-avant" role="tabpanel" aria-labelledby="seg-mo-avant">
+              <p class="groupe-titre">Quand un produit manquait</p>
+              <ol class="liste liste-num">
+                <li>Un employé le notait sur un carnet à souches</li>
+                <li>Il photographiait la souche</li>
+                <li>Il l’envoyait au dirigeant par messagerie</li>
+                <li>Le dirigeant passait la commande</li>
+              </ol>
+              <p class="groupe-note">Sur trois semaines, j’ai compté 62 bons : 9 raturés ou illisibles, 4 sans quantité. Quand une livraison arrivait incomplète, personne ne pouvait prouver ce qui avait été commandé.</p>
+            </div>
+            <div class="seg-panneau" id="mo-fait" role="tabpanel" aria-labelledby="seg-mo-fait" hidden>
+              <ul class="liste liste-dates">
+                <li><b>Oct. 2024</b><span>Sept séances d’observation dans les trois restaurants, entre les deux services.</span></li>
+                <li><b>30 oct. 2024</b><span>Expression de besoin validée : 19 exigences, sur un recto.</span></li>
+                <li><b>Nov. 2024</b><span>Maquettes sur Figma, modèle de données dans Firestore. Le panier vit en base : toutes les tablettes voient le même.</span></li>
+                <li><b>19 févr. 2025</b><span>Une refonte casse tout un soir. Dans la foulée : Git, préproduction à chaque pull request, production à la fusion par GitHub Actions.</span></li>
+                <li><b>Mars 2025</b><span>Pilote de six semaines : deux formations de 40 minutes, une fiche A4 plastifiée scotchée dans la réserve.</span></li>
+                <li><b>Avril et mai 2025</b><span>Deuxième et troisième restaurant, une demi-journée chacun.</span></li>
+              </ul>
+            </div>
+            <div class="seg-panneau" id="mo-resultat" role="tabpanel" aria-labelledby="seg-mo-resultat" hidden>
+              <ul class="liste">
+                <li><span>Écarts relevés à la réception</span><b class="vert">−35 %</b></li>
+                <li><span>Restaurants équipés</span><b>3</b></li>
+                <li><span>Mise en service des restaurants 2 et 3</span><b>½ journée chacun</b></li>
+              </ul>
+              <p class="groupe-note">Comparaison de novembre 2024 à janvier 2025 avec avril à juin 2025. C’est le chiffre que je peux défendre ; les autres, avec leurs limites, je les explique en entretien.</p>
+            </div>
+
+            <p class="groupe-titre">Fiche technique</p>
+            <ul class="liste">
+              <li><span>Interface</span><b>React 18, Material UI</b></li>
+              <li><span>Données</span><b>Cloud Firestore</b></li>
+              <li><span>Installation</span><b>Appli web installable (PWA)</b></li>
+              <li><span>Mise en ligne</span><b>GitHub Actions, Firebase Hosting</b></li>
+              <li><span>Bilans</span><b>Chart.js, exports PDF</b></li>
+            </ul>
+          </div>
+          <button type="button" class="barre-accueil a-barre" data-ferme><span class="vh">Revenir à l’accueil</span></button>
+        </section>
+
+        <section class="appli" id="app-borne" data-appli="borne" role="dialog" aria-modal="true" aria-labelledby="t-borne" hidden>
+          <header class="a-haut"><button type="button" class="a-retour" data-ferme>Accueil</button><span class="a-petit-titre" aria-hidden="true">Borne et cuisine</span></header>
+          <div class="a-defile">
+            <p class="a-sur">Deuxième année d’alternance · juin 2025 à août 2026</p>
+            <h2 class="a-titre" id="t-borne">Borne et cuisine</h2>
+            <p class="a-chapeau">Une seule application pour trois postes : la borne où le client commande, le comptoir, et l’écran de la cuisine. Environ 9 500 lignes, en service à partir d’avril 2026.</p>
+            <div class="liste-cartes">
+              <details class="carte" open>
+                <summary><span class="pastille-ico ico-borne" aria-hidden="true">€</span><b>Le paiement mixte</b></summary>
+                <p>Le midi en semaine, d’après la responsable de salle, une commande sur cinq se paie en partie en titres-restaurant. Le module cumule les moyens de paiement et suit le reste dû en direct. Tous les calculs se font en centimes entiers, avec un seul arrondi à l’affichage.</p>
+              </details>
+              <details class="carte">
+                <summary><span class="pastille-ico ico-borne" aria-hidden="true">4</span><b>Quatre horaires par commande</b></summary>
+                <p>Création, paiement, premier et dernier sandwich validé. Le dirigeant a enfin son temps d’attente moyen, par restaurant et par tranche horaire.</p>
+              </details>
+              <details class="carte">
+                <summary><span class="pastille-ico ico-borne" aria-hidden="true">2 m</span><b>Un écran lu à deux mètres</b></summary>
+                <p>Taille du texte réglée sur place, à deux mètres, avec deux personnes de l’équipe dont une qui porte des lunettes. Un samedi de rush, les commandes les plus anciennes sont passées en page 2 sans que personne les voie. Signalé le lundi, corrigé le jour même : l’écran empile les commandes, avec un bandeau permanent pour celles de plus de 15 minutes.</p>
+              </details>
+            </div>
+            <p class="groupe-titre">Fiche technique</p>
+            <ul class="liste">
+              <li><span>Interface</span><b>React, Material UI</b></li>
+              <li><span>Données</span><b>Firebase</b></li>
+              <li><span>Postes</span><b>Borne, comptoir, cuisine</b></li>
+            </ul>
+          </div>
+          <button type="button" class="barre-accueil a-barre" data-ferme><span class="vh">Revenir à l’accueil</span></button>
+        </section>
+
+        <section class="appli" id="app-support" data-appli="support" role="dialog" aria-modal="true" aria-labelledby="t-support" hidden>
+          <header class="a-haut"><button type="button" class="a-retour" data-ferme>Accueil</button><span class="a-petit-titre" aria-hidden="true">Support</span></header>
+          <div class="a-defile">
+            <p class="a-sur">Mars 2025 à août 2026 · environ un jour par semaine la deuxième année</p>
+            <h2 class="a-titre" id="t-support">Support</h2>
+            <p class="a-chapeau">Après chaque mise en service, je suis resté le contact des trois restaurants jusqu’à la fin de mon alternance.</p>
+            <ul class="liste liste-titres">
+              <li><b>Former</b><span>Deux séances de 40 minutes entre les services, une fiche A4 plastifiée, et un employé réticent devenu celui qui forme les saisonniers.</span></li>
+              <li><b>Trier</b><span>Un seul canal pour les signalements, avec l’heure, la tablette et l’écran affiché. Environ 40 par an, dont une dizaine de vrais défauts ; le reste, des demandes d’évolution, le wifi, une tablette déchargée.</span></li>
+              <li><b>Prévenir</b><span>Après un correctif parti un vendredi soir en plein service : pas de mise en production après le jeudi midi, et toujours une préproduction sur une vraie tablette.</span></li>
+              <li><b>Équiper</b><span>Après une tablette morte en plein service : une tablette de secours par restaurant, une procédure d’une page, un inventaire du parc.</span></li>
+              <li><b>Sauvegarder</b><span>Un export chaque semaine, une restauration testée, une alerte de budget sur Firebase.</span></li>
+              <li><b>Transmettre</b><span>Un document de passation de 22 pages, remis en juillet 2026.</span></li>
+            </ul>
+          </div>
+          <button type="button" class="barre-accueil a-barre" data-ferme><span class="vh">Revenir à l’accueil</span></button>
+        </section>
+
+        <section class="appli appli-sombre" id="app-zino" data-appli="zino" role="dialog" aria-modal="true" aria-labelledby="t-zino" hidden>
+          <header class="a-haut"><button type="button" class="a-retour" data-ferme>Accueil</button><span class="a-petit-titre" aria-hidden="true">HabboZino</span></header>
+          <div class="a-defile">
+            <p class="a-sur">Projet de fin d’études, mené à deux · depuis oct. 2024</p>
+            <h2 class="a-titre" id="t-zino"><img src="img/hz-logo.png" alt="HabboZino" width="772" height="136"></h2>
+            <p class="a-chapeau">Un jeu social en ligne dans l’esprit de Habbo : des salles en vue isométrique, des avatars, des objets rares et une monnaie virtuelle. On s’est partagé chaque partie selon les moments, le serveur de jeu en Java comme le site et l’hébergement.</p>
+            <div class="carrousel" data-carrousel>
+              <div class="c-piste">
+                <figure><img src="img/hz-jeu.webp" alt="HabboZino en jeu : une grande salle isométrique décorée, avec des avatars" width="1600" height="842" loading="lazy" decoding="async"><figcaption>En jeu, dans le navigateur : le client en React et PixiJS, relié au serveur Java.</figcaption></figure>
+                <figure><img src="img/hz-valeurs.webp" alt="Page des objets rares de HabboZino : un dragon sur un piédestal, la cote du jour qui défile" width="1600" height="1000" loading="lazy" decoding="async"><figcaption>La cote des objets rares, sur le site.</figcaption></figure>
+              </div>
+              <div class="c-points" aria-hidden="true"></div>
+              <button type="button" class="c-fleche c-prec" aria-label="Capture précédente"></button><button type="button" class="c-fleche c-suiv" aria-label="Capture suivante"></button>
+            </div>
+            <p class="groupe-titre">Ce qu’on a réglé</p>
+            <ul class="liste liste-titres">
+              <li><b>Sans le code source</b><span>Les objets en édition limitée recevaient des numéros de série au hasard. La version de l’émulateur qu’on utilise n’est distribuée que compilée : décompilation, puis trois corrections directement dans le bytecode Java.</span></li>
+              <li><b>Trois entiers</b><span>Les avatars n’apparaissaient plus. Le serveur envoyait trois champs de plus par avatar que le client ne lisait pas, tout le flux binaire suivant était décalé. Trois lectures ajoutées dans le parser du client.</span></li>
+              <li><b>100 % de CPU</b><span>L’émulateur lisait son entrée en boucle sans gérer la fin de fichier. Une ligne dans le service systemd, puis des timeouts nginx et un keepalive TCP pour les joueurs inactifs.</span></li>
+              <li><b>Double dépense</b><span>Trouvée en relisant le code : un verrou par joueur autour de chaque dépense, et des réclamations atomiques en base.</span></li>
+              <li><b>La caméra</b><span>Les photos ne se publiaient plus. Capture du trafic avec tcpdump, décodage des trames WebSocket : deux bugs côté client.</span></li>
+            </ul>
+            <p class="groupe-titre">Fiche technique</p>
+            <ul class="liste">
+              <li><span>Serveur de jeu</span><b>Java, plugins Arcturus</b></li>
+              <li><span>Client</span><b>TypeScript, React, PixiJS</b></li>
+              <li><span>Site</span><b>PHP 8.4, Laravel, Filament</b></li>
+              <li><span>Hébergement</span><b>Ubuntu, nginx, MySQL, Cloudflare</b></li>
+            </ul>
+            <a class="bouton-lien" href="https://habbozino.com/values" target="_blank" rel="noopener">Ouvrir habbozino.com</a>
+          </div>
+          <button type="button" class="barre-accueil a-barre" data-ferme><span class="vh">Revenir à l’accueil</span></button>
+        </section>
+
+        <section class="appli" id="app-parcours" data-appli="parcours" role="dialog" aria-modal="true" aria-labelledby="t-parcours" hidden>
+          <header class="a-haut"><button type="button" class="a-retour" data-ferme>Accueil</button><span class="a-petit-titre" aria-hidden="true">Parcours</span></header>
+          <div class="a-defile">
+            <h2 class="a-titre" id="t-parcours">Parcours</h2>
+            <div class="agenda">
+              <p class="ag-mois">2026</p>
+              <ul class="liste liste-agenda">
+                <li style="--c:#e9e3d6"><time>22 sept.</time><span><b>Master développement</b>Soutenance, diplômé. ISITECH Lyon.</span></li>
+                <li style="--c:#9fb2cc"><time>août</time><span><b>Fin de l’alternance chez MEXI</b>Deux ans, trois semaines en entreprise et une à l’école.</span></li>
+                <li style="--c:#ff8a5c"><time>24 juil.</time><span><b>Passation</b>Un document de 22 pages pour la personne suivante.</span></li>
+                <li style="--c:#5cc8f0"><time>avril</time><span><b>Borne, comptoir et écran cuisine en service</b></span></li>
+                <li style="--c:#3fd68c"><time>24 mars</time><span><b>HabboZino ouvre au public</b>Projet de fin d’études mené à deux.</span></li>
+              </ul>
+              <p class="ag-mois">2025</p>
+              <ul class="liste liste-agenda">
+                <li style="--c:#ffc229"><time>mai</time><span><b>My Orders dans les trois restaurants</b>Le deuxième à la mi-avril, le troisième début mai, une demi-journée chacun.<button type="button" class="ag-lien" data-ouvre="orders">Ouvrir My Orders</button></span></li>
+                <li style="--c:#ff8a5c"><time>11 avril</time><span><b>La règle du jeudi midi</b>Plus de mise en production en fin de semaine.</span></li>
+                <li style="--c:#ffc229"><time>mars</time><span><b>My Orders : le pilote</b>Six semaines dans un premier restaurant, deux formations de 40 minutes.</span></li>
+                <li style="--c:#ffc229"><time>19 févr.</time><span><b>My Orders : Git et GitHub Actions</b>Préproduction à chaque pull request, mise en ligne à la fusion.</span></li>
+              </ul>
+              <p class="ag-mois">2024</p>
+              <ul class="liste liste-agenda">
+                <li style="--c:#ffc229"><time>nov.</time><span><b>My Orders : maquettes et données</b>Écrans sur Figma, modèle de données dans Firestore.</span></li>
+                <li style="--c:#ffc229"><time>oct.</time><span><b>My Orders : observation</b>Sept séances dans les trois restaurants, une expression de besoin validée le 30.</span></li>
+                <li style="--c:#9fb2cc"><time>26 août</time><span><b>Premier jour chez MEXI</b>Alternant au service informatique, une équipe de trois.</span></li>
+              </ul>
+              <p class="ag-mois">2023</p>
+              <ul class="liste liste-agenda">
+                <li style="--c:#e9e3d6"><time>oct.</time><span><b>Entrée à ISITECH Lyon</b>Master développement.</span></li>
+              </ul>
+            </div>
+          </div>
+          <button type="button" class="barre-accueil a-barre" data-ferme><span class="vh">Revenir à l’accueil</span></button>
+        </section>
+
+        <section class="appli" id="app-photos" data-appli="photos" role="dialog" aria-modal="true" aria-labelledby="t-photos" hidden>
+          <header class="a-haut"><button type="button" class="a-retour" data-ferme>Accueil</button><span class="a-petit-titre" aria-hidden="true">Photos</span></header>
+          <div class="a-defile">
+            <h2 class="a-titre" id="t-photos">Photos</h2>
+            <p class="a-chapeau">Des captures de ce que j’ai construit, et les photos prises avec l’appareil photo de la tablette. Vos photos ne sont envoyées nulle part et disparaissent dès que vous quittez la page.</p>
+            <div class="grille-photos">
+              <button type="button" data-photo="0"><img src="img/mo-connexion.webp" alt="Écran de connexion de My Orders, avec un pavé numérique tactile" width="1680" height="970" loading="lazy" decoding="async"></button>
+              <button type="button" data-photo="1"><img src="img/mo-commande.webp" alt="Écran de commande de My Orders : les produits avec leur photo et leur stock, le panier partagé à droite" width="1256" height="970" loading="lazy" decoding="async"></button>
+              <button type="button" data-photo="2"><img src="img/mo-panier.webp" alt="Détail de la commande avant validation, avec les quantités et les boutons Vider et Valider" width="1680" height="972" loading="lazy" decoding="async"></button>
+              <button type="button" data-photo="3"><img src="img/mo-stock.webp" alt="Stock détaillé de My Orders, avec filtres par catégorie et par niveau de stock" width="1241" height="971" loading="lazy" decoding="async"></button>
+              <button type="button" data-photo="4"><img src="img/mo-journal.webp" alt="Journal des actions de My Orders : chaque ajout et chaque suppression, avec la date et l’heure" width="1241" height="972" loading="lazy" decoding="async"></button>
+              <button type="button" data-photo="5"><img src="img/mo-bilan.webp" alt="Bilan des commandes de My Orders, avec un tableau et des graphiques" width="1249" height="970" loading="lazy" decoding="async"></button>
+              <button type="button" data-photo="6"><img src="img/mo-admin.webp" alt="Gestion des catégories et des articles dans My Orders" width="1249" height="972" loading="lazy" decoding="async"></button>
+              <button type="button" data-photo="7"><img src="img/hz-jeu.webp" alt="HabboZino, en jeu" width="1600" height="842" loading="lazy" decoding="async"></button>
+              <button type="button" data-photo="8"><img src="img/hz-valeurs.webp" alt="HabboZino, la cote des objets rares" width="1600" height="1000" loading="lazy" decoding="async"></button>
+            </div>
+          </div>
+          <!-- la visionneuse : on glisse d'une photo à l'autre -->
+          <div class="visionneuse" id="visionneuse" hidden>
+            <div class="vis-haut"><button type="button" class="vis-fermer" id="vis-fermer">Fermer</button><button type="button" class="vis-supprimer" id="vis-supprimer" hidden>Supprimer</button></div>
+            <div class="vis-piste" id="vis-piste"></div>
+            <p class="vis-legende" id="vis-legende"></p>
+            <button type="button" class="c-fleche vis-prec" aria-label="Photo précédente"></button><button type="button" class="c-fleche vis-suiv" aria-label="Photo suivante"></button>
+          </div>
+          <button type="button" class="barre-accueil a-barre" data-ferme><span class="vh">Revenir à l’accueil</span></button>
+        </section>
+
+        <section class="appli" id="app-apropos" data-appli="apropos" role="dialog" aria-modal="true" aria-labelledby="t-apropos" hidden>
+          <header class="a-haut"><button type="button" class="a-retour" data-ferme>Accueil</button><span class="a-petit-titre" aria-hidden="true">À propos</span></header>
+          <div class="a-defile">
+            <h2 class="a-titre" id="t-apropos">À propos</h2>
+            <div class="profil-tete">
+              <span class="w-avatar w-avatar-grand" aria-hidden="true">YM</span>
+              <b>Yanis</b>
+              <span>Développeur fullstack, informaticien de gestion, technicien support</span>
+            </div>
+            <ul class="liste">
+              <li><span>Avant</span><b>BUT informatique</b></li>
+              <li><span>Diplôme</span><b>Master dev, ISITECH Lyon, 2026</b></li>
+              <li><span>Alternance</span><b>2 ans chez MEXI</b></li>
+              <li><span>Lieu</span><b>Lyon, mobile en France et en Suisse</b></li>
+              <li><span>Langues</span><b>Français, anglais courant</b></li>
+              <li><span>Permis</span><b>B</b></li>
+            </ul>
+            <p class="groupe-titre">Ce que je sais faire</p>
+            <ul class="liste liste-titres">
+              <li><b>Développer</b><span>JavaScript, React, Material UI, Firestore, TypeScript, PHP et Laravel, Java, SQL, Git.</span></li>
+              <li><b>Mettre en service</b><span>GitHub Actions, préproduction, Linux (Ubuntu, systemd), nginx, Cloudflare.</span></li>
+              <li><b>Accompagner</b><span>Former des équipes non techniques, trier les signalements, documenter, prévoir le plan B.</span></li>
+              <li><b>Comprendre le besoin</b><span>Observer sur le terrain, écrire une expression de besoin, la faire valider, dessiner les écrans.</span></li>
+            </ul>
+            <ul class="liste liste-liens">
+              <li><a href="mailto:yanis.ms@icloud.com"><span>M’écrire</span><b>yanis.ms@icloud.com</b></a></li>
+              <li><a href="tel:+33652607305"><span>M’appeler</span><b>+33 6 52 60 73 05</b></a></li>
+              <li><a href="https://github.com/Shawliiath" target="_blank" rel="noopener"><span>Mon code</span><b>github.com/Shawliiath</b></a></li>
+            </ul>
+          </div>
+          <button type="button" class="barre-accueil a-barre" data-ferme><span class="vh">Revenir à l’accueil</span></button>
+        </section>
+
+        <section class="appli appli-messages" id="app-messages" data-appli="messages" role="dialog" aria-modal="true" aria-labelledby="t-messages" hidden>
+          <div class="m-tete">
+            <button type="button" class="a-retour" data-ferme>Accueil</button>
+            <span class="w-avatar w-avatar-petit" aria-hidden="true">YM</span>
+            <h2 id="t-messages">Yanis</h2>
+          </div>
+          <div class="m-fil" id="m-fil" aria-live="polite">
+            <p class="m-jour">Aujourd’hui</p>
+            <p class="bulle lui" data-attente>Bonjour, moi c’est Yanis.</p>
+            <p class="bulle lui" data-attente>Je cherche un poste de développeur fullstack, d’informaticien de gestion ou de technicien support, en France et en Suisse.</p>
+            <p class="bulle lui" data-attente>Diplômé du Master dev en 2026, après deux ans d’alternance chez MEXI : deux applications construites seul, mises en service dans trois restaurants, et le support des équipes.</p>
+            <p class="bulle lui" data-attente>Écrivez-moi ici, le message part dans ma boîte mail.</p>
+            <p class="bulle lui" data-attente>Ou appelez-moi : <a href="tel:+33652607305">+33 6 52 60 73 05</a></p>
+          </div>
+          <form class="m-saisie" id="m-saisie">
+            <label class="vh" for="m-texte">Votre message</label>
+            <input id="m-texte" type="text" autocomplete="off" enterkeyhint="send" placeholder="Message">
+            <button type="submit" class="m-envoyer" aria-label="Envoyer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </form>
+          <button type="button" class="barre-accueil a-barre" data-ferme><span class="vh">Revenir à l’accueil</span></button>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+  <ul class="gestes" aria-label="Ce qu’on peut faire avec la tablette">
+    <li><b>Coin en haut à droite</b>le centre de contrôle</li>
+    <li class="g-clavier"><b><kbd>⌘</kbd> <kbd>K</kbd></b>tout chercher</li>
+    <li class="g-doigt"><b>Glisser vers le bas</b>tout chercher</li>
+    <li><b>Appui long</b>déplacer les icônes</li>
+    <li><b class="g-clavier">Bouton du haut</b><b class="g-doigt">Bouton sur le côté</b>verrouiller, éteindre</li>
+  </ul>
+</main>
+
+<!-- la suite de la page : quelques phrases, comme sur une page produit -->
+<section class="recit" aria-label="En quelques mots">
+  <div class="phrase">
+    <p class="allume">Deux ans d’alternance chez MEXI. Deux applications construites seul, en service dans trois restaurants, et le support des équipes au quotidien.</p>
+  </div>
+  <div class="phrase phrase-etapes">
+    <h2>Du terrain <span class="gris">à la production.</span></h2>
+    <ol class="etapes">
+      <li><b>Observer</b>sept séances en salle, entre les services</li>
+      <li><b>Cadrer</b>19 exigences, sur un recto</li>
+      <li><b>Dessiner</b>les écrans sur Figma</li>
+      <li><b>Coder</b>React, Firestore, une appli installable</li>
+      <li><b>Livrer</b>GitHub Actions, une préproduction</li>
+      <li><b>Accompagner</b>former, dépanner, transmettre</li>
+    </ol>
+  </div>
+  <div class="phrase">
+    <h2>Et à côté, <span>un jeu en ligne monté à deux.</span></h2>
+    <p class="ph-texte">HabboZino : un serveur de jeu en Java, un client React et PixiJS, un site en Laravel, un serveur Linux à faire tenir. Des corrections jusque dans le bytecode.</p>
+    <figure class="vitrine">
+      <img src="img/hz-jeu.webp" alt="HabboZino en jeu : une salle en vue isométrique, des avatars et des objets rares" width="1600" height="842" loading="lazy" decoding="async">
+      <figcaption><b>HabboZino.</b> Le client dans le navigateur, relié au serveur de jeu en temps réel.</figcaption>
+    </figure>
+    <div class="vitrine-duo">
+      <figure class="vitrine">
+        <img src="img/hz-accueil.webp" alt="L’accueil de HabboZino : une machine à sous en pixel art qui contient le formulaire de connexion, avec la vérification Cloudflare" width="1600" height="961" loading="lazy" decoding="async">
+        <figcaption><b>L’accueil.</b> La connexion se fait dans une machine à sous, avec une vérification Cloudflare Turnstile avant de jouer.</figcaption>
+      </figure>
+      <figure class="vitrine">
+        <img src="img/hz-portefeuille.webp" alt="Le portefeuille de HabboZino : le solde, les onglets dépôt, retrait, historique et convertisseur, et les moyens de paiement carte, Bitcoin, Ethereum et Solana" width="1600" height="1000" loading="lazy" decoding="async">
+        <figcaption><b>Le portefeuille.</b> Dépôt par carte, Bitcoin, Ethereum ou Solana, retrait, historique et convertisseur, avec des plafonds selon le niveau de vérification.</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="phrase phrase-outils">
+    <h2>La boîte à outils, <span class="gris">projet par projet.</span></h2>
+    <dl class="specs">
+      <div class="spec"><dt>Langages</dt><dd><ul><li><b>JavaScript</b><small>My Orders, la borne, cette tablette</small></li><li><b>TypeScript</b><small>le client du jeu</small></li><li><b>PHP</b><small>le site HabboZino</small></li><li><b>Java</b><small>les plugins du serveur de jeu</small></li><li><b>SQL</b><small>MySQL, les migrations</small></li><li><b>Python</b><small>scripts de build et de génération de PDF</small></li><li><b>Bash</b><small>déploiements, sauvegardes</small></li></ul></dd></div>
+      <div class="spec"><dt>Front-end</dt><dd><ul><li><b>React</b><small>My Orders, la borne, le client du jeu</small></li><li><b>Material UI</b><small>My Orders</small></li><li><b>PixiJS</b><small>le rendu du jeu en isométrique</small></li><li><b>Livewire et Alpine.js</b><small>le site HabboZino</small></li><li><b>Tailwind CSS et Sass</b><small>les interfaces</small></li><li><b>Vite</b><small>les builds</small></li><li><b>PWA et Workbox</b><small>My Orders installable, hors ligne</small></li><li><b>Chart.js</b><small>les bilans de commandes</small></li></ul></dd></div>
+      <div class="spec"><dt>Back-end</dt><dd><ul><li><b>Laravel 13</b><small>le site HabboZino</small></li><li><b>Filament</b><small>le panneau d’administration</small></li><li><b>Firebase et Firestore</b><small>My Orders, la borne</small></li><li><b>API REST et webhooks</b><small>paiements, alertes</small></li><li><b>Fortify et Sanctum</b><small>comptes et sessions</small></li></ul></dd></div>
+      <div class="spec"><dt>Paiements et crypto</dt><dd><ul><li><b>Stripe</b><small>paiement par carte, webhooks</small></li><li><b>Bitcoin</b><small>dépôts vérifiés sur la blockchain</small></li><li><b>Ethereum</b><small>dépôts vérifiés via Etherscan</small></li><li><b>Solana</b><small>dépôts vérifiés sur le réseau</small></li><li><b>Cours en direct</b><small>CoinGecko, Kraken</small></li></ul></dd></div>
+      <div class="spec"><dt>Sécurité</dt><dd><ul><li><b>Vérification d’identité</b><small>deux niveaux, contrôle des PDF</small></li><li><b>Anti-VPN</b><small>proxycheck.io, ipapi.is</small></li><li><b>Cloudflare Turnstile</b><small>contre les robots</small></li><li><b>Verrous par joueur</b><small>contre la double dépense</small></li><li><b>Journal d’activité</b><small>chaque action tracée</small></li></ul></dd></div>
+      <div class="spec"><dt>Temps réel et réseau</dt><dd><ul><li><b>WebSocket</b><small>le client du jeu</small></li><li><b>RCON</b><small>le site parle au serveur de jeu</small></li><li><b>Protocole binaire</b><small>le parser du client</small></li><li><b>tcpdump</b><small>diagnostic des trames</small></li></ul></dd></div>
+      <div class="spec"><dt>Mise en production</dt><dd><ul><li><b>Linux</b><small>Ubuntu 24.04</small></li><li><b>nginx et PHP-FPM</b><small>le serveur web</small></li><li><b>MySQL 8</b><small>la base du jeu et du site</small></li><li><b>systemd</b><small>les services</small></li><li><b>Cloudflare</b><small>DNS, proxy, pare-feu</small></li><li><b>Let’s Encrypt</b><small>les certificats</small></li><li><b>GitHub Actions</b><small>préproduction, déploiements, PDF</small></li><li><b>Firebase Hosting</b><small>My Orders</small></li><li><b>Sauvegardes</b><small>automatiques, restauration testée</small></li></ul></dd></div>
+      <div class="spec"><dt>Rétro-ingénierie</dt><dd><ul><li><b>JD-GUI, CFR, javap</b><small>décompiler l’émulateur</small></li><li><b>Bytecode Java</b><small>trois corrections sans le code source</small></li></ul></dd></div>
+      <div class="spec"><dt>Tests et outils</dt><dd><ul><li><b>Pest et PHPUnit</b><small>le site HabboZino</small></li><li><b>Playwright</b><small>vérifications et captures automatiques</small></li><li><b>Git et GitHub</b><small>tous les projets</small></li><li><b>Figma</b><small>les maquettes</small></li><li><b>Webhooks Discord</b><small>les alertes de l’équipe</small></li></ul></dd></div>
+    </dl>
+  </div>
+</section>
+
+<footer class="final" id="contact">
+  <h2>Parlons-en.</h2>
+  <p class="final-sous">Développeur fullstack, informaticien de gestion ou technicien support. Disponible, en France et en Suisse.</p>
+  <div class="final-liens">
+    <a class="final-lien" href="mailto:yanis.ms@icloud.com" aria-label="Écrire à yanis.ms@icloud.com">yanis.ms@icloud.com</a>
+    <a class="final-lien" href="tel:+33652607305" aria-label="Appeler le +33 6 52 60 73 05">+33 6 52 60 73 05</a>
+    <a class="final-lien" href="https://github.com/Shawliiath" target="_blank" rel="noopener" aria-label="Voir le code sur github.com/Shawliiath">github.com/Shawliiath</a>
+  </div>
+  <p class="signature">Yanis, 2026</p>
+</footer>
+
+<script src="app.js?v=20261023-zino-onglet" defer></script>
+</body>
+</html>
